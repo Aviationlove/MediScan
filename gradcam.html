@@ -67,9 +67,10 @@
     /* Fix for timeline mobile view */
     @media (max-width: 768px) {
       .timeline-item {
-        margin-left: 3.5rem;
+        margin-left: 0;
         position: relative;
         padding-bottom: 2rem;
+        padding-left: 4rem;
       }
       
       .timeline-item h3 {
@@ -79,36 +80,15 @@
       }
       
       .timeline-item .absolute {
-        left: -3.5rem !important;
-      }
-    }
-
-    /* Timeline mobile responsiveness fixes */
-    @media (max-width: 768px) {
-      /* Fix for timeline items on mobile */
-      .timeline-item {
-        padding-left: 4rem;
-        position: relative;
-        padding-bottom: 2.5rem;
-      }
-      
-      /* Ensure text aligns properly on mobile */
-      .timeline-item h3 {
-        text-align: left;
-        padding-right: 0;
-        padding-left: 0;
-        display: block;
-      }
-      
-      /* Fix icon circles positioning on mobile */
-      .timeline-item .absolute {
         left: 0 !important;
-        transform: translateX(0) !important;
+        right: auto !important;
         margin-left: 0 !important;
+        transform: translateX(0) !important;
       }
-      
-      /* Text alignment for all items on mobile */
+
+      /* Ensure proper positioning for all timeline items */
       .timeline-item [class*="col-start-"] {
+        grid-column-start: 1;
         padding-left: 0;
       }
       
@@ -116,7 +96,40 @@
         padding-right: 0;
         text-align: left;
       }
+      
+      /* Fix text alignment for all items on mobile */
+      .max-w-3xl.mx-auto.text-center h2,
+      .max-w-3xl.mx-auto.text-center p {
+        text-align: center;
+      }
+      
+      .flex.items-center.justify-center.mb-4 {
+        justify-content: center;
+      }
+      
+      /* Make sure any right-aligned content is now left-aligned on mobile */
+      .timeline-item .md:text-right {
+        text-align: left;
+      }
+      
+      /* Remove the after content for h3 elements on mobile */
+      .timeline-item h3:after {
+        display: none !important;
+      }
+
+      /* Fix timeline circle positioning specifically */
+      .timeline-item .absolute.left-0.md\\:left-1\\ {
+        left: 0 !important;
+        top: 0 !important;
+        transform: translateY(0) !important;
+      }
     }
+    
+    /* Add proper 3D transform classes */
+    .preserve-3d { transform-style: preserve-3d; }
+    .perspective-1000 { perspective: 1000px; }
+    .rotate-y-180 { transform: rotateY(180deg); }
+    .translate-z-negative { transform: translateZ(-20px); }
   </style>
 </head>
 <body class="bg-white text-gray-800 font-sans">
@@ -155,7 +168,7 @@
             </div>
             
             <!-- Grad-CAM image (back) -->
-            <div class="visual-gradcam absolute inset-0 rounded-xl shadow-2xl transition-all duration-600 z-10 bg-gray-50 overflow-hidden transform -translate-z-5 rotateY-180">
+            <div class="visual-gradcam absolute inset-0 rounded-xl shadow-2xl transition-all duration-600 z-10 bg-gray-50 overflow-hidden transform translate-z-negative rotate-y-180">
               <img src="./images/wrist-gradcam.jpg" alt="Wrist X-ray with Grad-CAM visualization" class="w-full h-full object-cover scale-105"
                    onerror="this.src='https://images.unsplash.com/photo-1583774198559-21876a208a23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80'">
             </div>
@@ -282,13 +295,13 @@
               <div class="comparison-wrapper relative w-full h-full overflow-hidden">
                 <!-- After image (full width) -->
                 <div class="comparison-after absolute inset-0">
-                  <img src="./images/wrist-gradcamm.jpg" alt="Wrist X-ray with Grad-CAM" class="w-full h-full object-cover"
+                  <img src="./images/wrist-gradcam.jpg" alt="Wrist X-ray with Grad-CAM" class="w-full h-full object-cover"
                        onerror="this.src='https://images.unsplash.com/photo-1583774198559-21876a208a23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80'">
                 </div>
                 
                 <!-- Before image (adjustable width) -->
                 <div class="comparison-before absolute inset-0 w-1/2 overflow-hidden">
-                  <img src="./images/wrist-xrayy.jpg" alt="Wrist X-ray" class="w-[200%] h-full object-cover"
+                  <img src="./images/wrist-xray.jpg" alt="Wrist X-ray" class="w-[200%] h-full object-cover"
                        onerror="this.src='https://images.unsplash.com/photo-1583774198559-21876a208a23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80'">
                 </div>
                 
@@ -387,11 +400,11 @@
         flipButton.addEventListener('click', () => {
           if (!isFlipped) {
             // Show heatmap (flip to Grad-CAM view)
-            visualXray.classList.add('transform', '-translate-z-5', 'rotateY-180', 'z-10');
+            visualXray.classList.add('transform', 'rotate-y-180', 'z-10');
             visualXray.classList.remove('z-20');
             
             visualGradcam.classList.add('z-20');
-            visualGradcam.classList.remove('transform', '-translate-z-5', 'rotateY-180', 'z-10');
+            visualGradcam.classList.remove('transform', 'rotate-y-180', 'z-10');
             
             flipButton.classList.remove('from-blue-500', 'to-blue-700');
             flipButton.classList.add('from-red-400', 'to-red-500');
@@ -405,11 +418,11 @@
             `;
           } else {
             // Show original (flip back to X-ray view)
-            visualXray.classList.remove('transform', '-translate-z-5', 'rotateY-180', 'z-10');
+            visualXray.classList.remove('transform', 'rotate-y-180', 'z-10');
             visualXray.classList.add('z-20');
             
             visualGradcam.classList.remove('z-20');
-            visualGradcam.classList.add('transform', '-translate-z-5', 'rotateY-180', 'z-10');
+            visualGradcam.classList.add('transform', 'rotate-y-180', 'z-10');
             
             flipButton.classList.remove('from-red-400', 'to-red-500');
             flipButton.classList.add('from-blue-500', 'to-blue-700');
@@ -494,16 +507,6 @@
         sliders.forEach(initComparison);
       });
     });
-    
-    // Add CSS style for 3D transform classes
-    const style = document.createElement('style');
-    style.textContent = `
-      .preserve-3d { transform-style: preserve-3d; }
-      .perspective-1000 { perspective: 1000px; }
-      .rotateY-180 { transform: rotateY(180deg); }
-      .-translate-z-5 { transform: translateZ(-20px); }
-    `;
-    document.head.appendChild(style);
   </script>
 </body>
 </html>
