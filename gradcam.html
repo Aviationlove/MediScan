@@ -128,8 +128,55 @@
     /* Add proper 3D transform classes */
     .preserve-3d { transform-style: preserve-3d; }
     .perspective-1000 { perspective: 1000px; }
+    .backface-hidden { backface-visibility: hidden; }
     .rotate-y-180 { transform: rotateY(180deg); }
-    .translate-z-negative { transform: translateZ(-20px); }
+    
+    /* Visual flip container styling */
+    .visual-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+    }
+    
+    .visual-xray,
+    .visual-gradcam {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      transition: all 0.6s ease;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      -webkit-backface-visibility: hidden; /* Fix for Safari */
+    }
+    
+    .visual-xray {
+      z-index: 2;
+      transform: rotateY(0deg);
+    }
+    
+    .visual-gradcam {
+      transform: rotateY(180deg);
+      z-index: 1;
+    }
+    
+    .flipped .visual-xray {
+      z-index: 1;
+    }
+    
+    .flipped .visual-gradcam {
+      z-index: 2;
+    }
+    
+    /* Ensure images properly fit within containers */
+    .visual-xray img,
+    .visual-gradcam img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-800 font-sans">
@@ -162,13 +209,13 @@
         <div class="lg:col-span-7 relative pb-[90%] lg:pb-0 lg:h-[500px] perspective-1000">
           <div id="visual-container" class="absolute w-4/5 h-4/5 top-[5%] left-[10%] preserve-3d animate-float">
             <!-- X-ray image (front) -->
-            <div class="visual-xray absolute inset-0 rounded-xl shadow-2xl transition-all duration-600 z-20 bg-gray-50 overflow-hidden">
+            <div class="visual-xray absolute inset-0 rounded-xl shadow-2xl transition-all duration-600 z-20 bg-gray-50 overflow-hidden backface-hidden flip-transition">
               <img src="./images/wrist-xray.jpg" alt="Wrist X-ray" class="w-full h-full object-cover scale-105" 
                    onerror="this.src='https://images.unsplash.com/photo-1583774198559-21876a208a23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80'">
             </div>
             
             <!-- Grad-CAM image (back) -->
-            <div class="visual-gradcam absolute inset-0 rounded-xl shadow-2xl transition-all duration-600 z-10 bg-gray-50 overflow-hidden transform translate-z-negative rotate-y-180">
+            <div class="visual-gradcam absolute inset-0 rounded-xl shadow-2xl transition-all duration-600 z-10 bg-gray-50 overflow-hidden transform translate-z-negative rotate-y-180 backface-hidden flip-transition">
               <img src="./images/wrist-gradcam.jpg" alt="Wrist X-ray with Grad-CAM visualization" class="w-full h-full object-cover scale-105"
                    onerror="this.src='https://images.unsplash.com/photo-1583774198559-21876a208a23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80'">
             </div>
@@ -398,40 +445,55 @@
       
       if (flipButton && visualContainer) {
         flipButton.addEventListener('click', () => {
-          if (!isFlipped) {
+          isFlipped = !isFlipped;
+          
+          if (isFlipped) {
             // Show heatmap (flip to Grad-CAM view)
-            visualXray.classList.add('transform', 'rotate-y-180', 'z-10');
-            visualXray.classList.remove('z-20');
+            visualContainer.style.transform = 'rotateY(180deg)';
+            visualContainer.classList.add('flipped');
             
-            visualGradcam.classList.add('z-20');
-            visualGradcam.classList.remove('transform', 'rotate-y-180', 'z-10');
+            // Force reflow to ensure animation plays properly
+            void visualContainer.offsetWidth;
             
-            flipButton.classList.remove('from-blue-500', 'to-blue-700');
-            flipButton.classList.add('from-red-400', 'to-red-500');
-            flipButton.innerHTML = `
-              <span class="relative z-10 flex items-center">
-                <span class="inline-block w-3 h-3 bg-white rounded-full mr-2 relative before:content-[''] before:absolute before:w-5 before:h-5 before:-inset-1 before:bg-white/30 before:rounded-full before:animate-pulse"></span>
-                <span class="button-icon transform transition-transform duration-500"><i class="fas fa-eye"></i></span> 
-                Viewing Heatmap
-              </span>
-              <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-700 z-0"></span>
-            `;
+            setTimeout(() => {
+              flipButton.classList.remove('from-blue-500', 'to-blue-700');
+              flipButton.classList.add('from-red-400', 'to-red-500');
+              flipButton.innerHTML = `
+                <span class="relative z-10 flex items-center">
+                  <span class="inline-block w-3 h-3 bg-white rounded-full mr-2 relative before:content-[''] before:absolute before:w-5 before:h-5 before:-inset-1 before:bg-white/30 before:rounded-full before:animate-pulse"></span>
+                  <span class="button-icon transform transition-transform duration-500"><i class="fas fa-eye"></i></span> 
+                  Viewing Heatmap
+                </span>
+                <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-700 z-0"></span>
+              `;
+              
+              // Force a repaint of the GradCAM image to ensure it's visible
+              const gradcamImg = visualGradcam.querySelector('img');
+              if (gradcamImg) {
+                const currentSrc = gradcamImg.src;
+                gradcamImg.src = '';
+                setTimeout(() => {
+                  gradcamImg.src = currentSrc;
+                }, 10);
+              }
+            }, 300);
           } else {
             // Show original (flip back to X-ray view)
-            visualXray.classList.remove('transform', 'rotate-y-180', 'z-10');
-            visualXray.classList.add('z-20');
+            visualContainer.style.transform = 'rotateY(0deg)';
+            visualContainer.classList.remove('flipped');
             
-            visualGradcam.classList.remove('z-20');
-            visualGradcam.classList.add('transform', 'rotate-y-180', 'z-10');
+            // Force reflow to ensure animation plays properly
+            void visualContainer.offsetWidth;
             
-            flipButton.classList.remove('from-red-400', 'to-red-500');
-            flipButton.classList.add('from-blue-500', 'to-blue-700');
-            flipButton.innerHTML = `
-              <span class="relative z-10"><i class="fas fa-sync-alt"></i> Toggle Heatmap View</span>
-              <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-700 z-0"></span>
-            `;
+            setTimeout(() => {
+              flipButton.classList.remove('from-red-400', 'to-red-500');
+              flipButton.classList.add('from-blue-500', 'to-blue-700');
+              flipButton.innerHTML = `
+                <span class="relative z-10"><i class="fas fa-sync-alt"></i> Toggle Heatmap View</span>
+                <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-700 z-0"></span>
+              `;
+            }, 300);
           }
-          isFlipped = !isFlipped;
         });
       }
       
