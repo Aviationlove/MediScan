@@ -4,604 +4,276 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MediScan | Features</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="footer-styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <style>
-      /* Features page styles matching index and about page themes */
-      .features-hero {
-        padding: 12rem 0 6rem;
-        position: relative;
-        overflow: hidden;
-        background: linear-gradient(135deg, var(--surface-2) 0%, var(--white) 100%);
-      }
-      
-      .features-hero-shape {
-        position: absolute;
-        top: -50%;
-        right: -20%;
-        width: 80%;
-        height: 200%;
-        background: radial-gradient(circle at center, rgba(0, 98, 255, 0.05) 0%, rgba(234, 239, 255, 0) 70%);
-        border-radius: 50%;
-        z-index: 0;
-        animation: float 10s ease-in-out infinite;
-      }
-      
-      .features-hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-      }
-      
-      .features-subtitle {
-        font-size: 1.25rem;
-        color: var(--primary);
-        margin-bottom: 1rem;
-        font-weight: 600;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-      }
-      
-      .features-title {
-        font-size: 3rem;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-        font-weight: 800;
-        background: linear-gradient(90deg, var(--text) 0%, var(--primary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      
-      .features-description {
-        font-size: 1.25rem;
-        color: var(--text-light);
-        margin-bottom: 2.5rem;
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      /* Features content area */
-      .features-container {
-        max-width: 1200px;
-        margin: 0 auto 6rem;
-        padding: 0 1.5rem;
-      }
-
-      /* Feature section styling */
-      .feature-section {
-        padding: 6rem 0;
-        position: relative;
-      }
-      
-      .feature-section:not(:last-child) {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-      }
-      
-      .section-header {
-        text-align: center;
-        max-width: 700px;
-        margin: 0 auto 4rem;
-      }
-      
-      .section-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: var(--text);
-      }
-      
-      .section-subtitle {
-        font-size: 1.1rem;
-        color: var(--text-light);
-      }
-
-      /* Features item grid similar to about page values */
-      .feature-items {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 3rem;
-        margin: 0 auto;
-      }
-
-      .feature-item {
-        position: relative;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-        padding-top: 1.5rem;
-      }
-      
-      .feature-item::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 40px;
-        height: 3px;
-        background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-      }
-
-      /* Feature icon styling */
-      .feature-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 70px;
-        height: 70px;
-        border-radius: 20px;
-        margin-bottom: 1.5rem;
-        font-size: 1.75rem;
-        color: var(--white);
-      }
-
-      /* Different gradient colors for variety */
-      .feature-section:nth-child(1) .feature-item:nth-child(1) .feature-icon {
-        background: linear-gradient(135deg, #4BA3FF, #0062FF);
-      }
-
-      .feature-section:nth-child(1) .feature-item:nth-child(2) .feature-icon {
-        background: linear-gradient(135deg, #00D1FF, #00A0FF);
-      }
-
-      .feature-section:nth-child(1) .feature-item:nth-child(3) .feature-icon {
-        background: linear-gradient(135deg, #5E7BFE, #3851E0);
-      }
-
-      .feature-section:nth-child(2) .feature-item:nth-child(1) .feature-icon {
-        background: linear-gradient(135deg, #869cdd, #838fc1);
-      }
-
-      .feature-section:nth-child(2) .feature-item:nth-child(2) .feature-icon {
-        background: linear-gradient(135deg, #50CAFF, #0088CC);
-      }
-
-      .feature-section:nth-child(2) .feature-item:nth-child(3) .feature-icon {
-        background: linear-gradient(135deg, #6D94FF, #4361E8);
-      }
-
-      .feature-section:nth-child(3) .feature-item:nth-child(1) .feature-icon {
-        background: linear-gradient(135deg, #5D8BFF, #3254D9);
-      }
-
-      .feature-section:nth-child(3) .feature-item:nth-child(2) .feature-icon {
-        background: linear-gradient(135deg, #41B1FF, #1F93E8);
-      }
-
-      .feature-section:nth-child(3) .feature-item:nth-child(3) .feature-icon {
-        background: linear-gradient(135deg, #599AFF, #2E58E0);
-      }
-
-      .feature-title {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        font-weight: 600;
-        color: var(--text);
-      }
-
-      .feature-description {
-        color: var(--text-light);
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-      }
-
-      .feature-link {
-        display: inline-flex;
-        align-items: center;
-        color: var(--primary);
-        font-weight: 600;
-        text-decoration: none;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-      }
-
-      .feature-link i {
-        margin-left: 5px;
-        transition: transform 0.3s ease;
-      }
-
-      .feature-link:hover i {
-        transform: translateX(3px);
-      }
-
-      /* Stats section styled like about page */
-      .stats-section {
-        padding: 6rem 0;
-        position: relative;
-        background-color: var(--surface-2);
-      }
-      
-      .stats-row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin: 0 -1rem;
-      }
-      
-      .stat-block {
-        flex: 1;
-        min-width: 200px;
-        padding: 0 1rem;
-        margin-bottom: 2rem;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
-      
-      .stat-block::after {
-        content: "";
-        position: absolute;
-        top: 20px;
-        right: 0;
-        width: 1px;
-        height: 70%;
-        background: linear-gradient(to bottom, transparent, var(--primary-light) 30%, var(--primary-light) 70%, transparent);
-      }
-      
-      .stat-block:last-child::after {
-        display: none;
-      }
-      
-      .stat-icon {
-        width: 60px;
-        height: 60px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.2rem;
-        color: var(--white);
-        font-size: 1.5rem;
-        transform: rotate(-5deg);
-        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-      }
-      
-      .stat-number {
-        font-size: 3.5rem;
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-        background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        line-height: 1;
-      }
-      
-      .stat-label {
-        color: var(--text-light);
-        font-size: 1.1rem;
-        font-weight: 500;
-        text-align: center;
-      }
-
-      /* Testimonials section styled like index page */
-      .testimonials {
-        padding: 6rem 0;
-        position: relative;
-      }
-
-      .testimonials-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-      }
-
-      .testimonial {
-        background: var(--surface-1);
-        border-radius: 16px;
-        padding: 2.5rem;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-        position: relative;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
-
-      .testimonial-quote {
-        font-size: 1.25rem;
-        color: var(--text);
-        margin-bottom: 1.5rem;
-        font-weight: 500;
-        line-height: 1.6;
-        position: relative;
-      }
-
-      .testimonial-quote::before {
-        content: '"';
-        position: absolute;
-        top: -20px;
-        left: -10px;
-        font-size: 5rem;
-        color: rgba(0, 98, 255, 0.1);
-        font-family: serif;
-        line-height: 1;
-      }
-
-      .testimonial-author {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .testimonial-avatar {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: var(--primary);
-        color: var(--white);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-        font-size: 1.25rem;
-      }
-
-      .testimonial-info {
-        flex: 1;
-      }
-
-      .testimonial-name {
-        font-weight: 600;
-        font-size: 1.1rem;
-        margin-bottom: 0.25rem;
-      }
-
-      .testimonial-role {
-        color: var(--text-light);
-        font-size: 0.9rem;
-      }
-
-      /* Responsive styles */
-      @media (max-width: 1200px) {
-        .feature-items {
-          gap: 2rem;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              blue: {
+                50: '#EAEFFF',
+                100: '#D5DEFF',
+                200: '#B3C5FF',
+                300: '#89A8FF',
+                400: '#5E7BFE',
+                500: '#0062FF',
+                600: '#0048c2',
+                700: '#003494',
+                800: '#002266',
+                900: '#001133',
+              },
+              cyan: {
+                400: '#00D1FF',
+                500: '#00A0FF',
+              },
+              gray: {
+                50: '#F5F7FF',
+                800: '#15173D',
+                600: '#596080',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            animation: {
+              'float': 'float 10s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%': { transform: 'translateY(0) rotate(0)' },
+                '50%': { transform: 'translateY(-30px) rotate(8deg)' },
+                '100%': { transform: 'translateY(0) rotate(0)' },
+              }
+            }
+          }
         }
       }
-
-      @media (max-width: 992px) {
-        .feature-items {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        
-        .features-title {
-          font-size: 2.5rem;
-        }
-        
-        .stats-container {
-          padding: 3rem 2rem;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .feature-items,
-        .testimonials-grid {
-          grid-template-columns: 1fr;
-        }
-        
-        .features-hero {
-          padding: 9rem 0 4rem;
-        }
-        
-        .features-title {
-          font-size: 2.2rem;
-        }
-        
-        .features-description {
-          font-size: 1.1rem;
-        }
-        
-        .section-title {
-          font-size: 2rem;
-        }
-        
-        .stat-block {
-          flex-basis: 50%;
-        }
-        
-        .stat-block::after {
-          display: none;
-        }
-      }
-
-      @media (max-width: 576px) {
-        .stat-block {
-          flex-basis: 100%;
-        }
-      }
-    </style>
+    </script>
   </head>
 
-  <body>
+  <body class="bg-gray-50 text-gray-800 font-sans">
     <!-- NAVIGATION PLACEHOLDER -->
     <div id="nav-placeholder"></div>
 
     <!-- FEATURES CONTENT -->
-    <main class="features-page">
+    <main>
       <!-- Header Section -->
-      <section class="features-hero">
-        <div class="features-hero-shape"></div>
-        <div class="container">
-          <div class="features-hero-content">
-            <p class="features-subtitle">Advanced Technology</p>
-            <h1 class="features-title">Powerful Features for Modern Healthcare</h1>
-            <p class="features-description">Discover how MediScan's AI-driven platform is revolutionizing medical image analysis with precision, speed, and reliability</p>
+      <section class="pt-48 pb-24 relative overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+        <div class="absolute top-[-50%] right-[-20%] w-4/5 h-[200%] bg-[radial-gradient(circle_at_center,rgba(0,98,255,0.05)_0%,rgba(234,239,255,0)_70%)] rounded-full z-0 animate-float"></div>
+        <div class="w-[90%] max-w-7xl mx-auto">
+          <div class="max-w-3xl mx-auto text-center relative z-10">
+            <p class="text-blue-500 text-lg font-semibold uppercase tracking-wide mb-4">Advanced Technology</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-gray-800 to-blue-500">Powerful Features for Modern Healthcare</h1>
+            <p class="text-gray-600 text-xl mb-10 max-w-2xl mx-auto">
+              Discover how MediScan's AI-driven platform is revolutionizing medical image analysis with precision, speed, and reliability
+            </p>
           </div>
         </div>
       </section>
 
-      <!-- Main Content with feature sections matching about page style -->
-      <main>
+      <!-- Main Content with feature sections -->
+      <div>
         <!-- AI Detection Features -->
-        <section class="feature-section">
-          <div class="container">
-            <div class="section-header">
-              <h2 class="section-title">AI-Powered Detection</h2>
-              <p class="section-subtitle">Our state-of-the-art artificial intelligence algorithms have been trained on thousands of X-ray images to detect fractures with incredible accuracy</p>
+        <section class="py-24 border-b border-gray-100">
+          <div class="w-[90%] max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+              <h2 class="text-4xl font-bold mb-4">AI-Powered Detection</h2>
+              <p class="text-gray-600 text-lg">Our state-of-the-art artificial intelligence algorithms have been trained on thousands of X-ray images to detect fractures with incredible accuracy</p>
             </div>
             
-            <div class="feature-items">
-              <div class="feature-item">
-                <div class="feature-icon">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+              <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 pt-6 relative before:content-[''] before:absolute before:top-0 before:left-0 before:w-10 before:h-[3px] before:bg-gradient-to-r before:from-blue-500 before:to-cyan-400">
+                <div class="w-[70px] h-[70px] flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-400 to-blue-500 text-white text-3xl mb-6">
                   <i class="fas fa-brain"></i>
                 </div>
-                <h3 class="feature-title">Deep Learning Model</h3>
-                <p class="feature-description">Our proprietary neural network architecture has been specifically designed to identify subtle fracture patterns that might be missed in conventional screening.</p>
-                <a href="#" class="feature-link">Learn more <i class="fas fa-chevron-right"></i></a>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Deep Learning Model</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                  Our proprietary neural network architecture has been specifically designed to identify subtle fracture patterns that might be missed in conventional screening.
+                </p>
+                <a href="#" class="text-blue-500 font-semibold inline-flex items-center text-sm hover:text-blue-700 transition-all duration-300 group">
+                  Learn more <i class="fas fa-chevron-right ml-1.5 transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                </a>
               </div>
               
-              <div class="feature-item">
-                <div class="feature-icon">
+              <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 pt-6 relative before:content-[''] before:absolute before:top-0 before:left-0 before:w-10 before:h-[3px] before:bg-gradient-to-r before:from-blue-500 before:to-cyan-400">
+                <div class="w-[70px] h-[70px] flex items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-500 text-white text-3xl mb-6">
                   <i class="fas fa-bolt"></i>
                 </div>
-                <h3 class="feature-title">Real-time Analysis</h3>
-                <p class="feature-description">Upload X-ray images and receive detailed fracture analysis in seconds, allowing for faster decision-making and treatment planning.</p>
-                <a href="#" class="feature-link">Learn more <i class="fas fa-chevron-right"></i></a>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Real-time Analysis</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                  Upload X-ray images and receive detailed fracture analysis in seconds, allowing for faster decision-making and treatment planning.
+                </p>
+                <a href="#" class="text-blue-500 font-semibold inline-flex items-center text-sm hover:text-blue-700 transition-all duration-300 group">
+                  Learn more <i class="fas fa-chevron-right ml-1.5 transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                </a>
               </div>
               
-              <div class="feature-item">
-                <div class="feature-icon">
+              <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 pt-6 relative before:content-[''] before:absolute before:top-0 before:left-0 before:w-10 before:h-[3px] before:bg-gradient-to-r before:from-blue-500 before:to-cyan-400">
+                <div class="w-[70px] h-[70px] flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-400 to-blue-700 text-white text-3xl mb-6">
                   <i class="fas fa-chart-line"></i>
                 </div>
-                <h3 class="feature-title">99.8% Accuracy</h3>
-                <p class="feature-description">Our model has demonstrated exceptional precision in clinical trials, with detection rates exceeding traditional diagnostic methods.</p>
-                <a href="#" class="feature-link">See study results <i class="fas fa-chevron-right"></i></a>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">99.8% Accuracy</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                  Our model has demonstrated exceptional precision in clinical trials, with detection rates exceeding traditional diagnostic methods.
+                </p>
+                <a href="#" class="text-blue-500 font-semibold inline-flex items-center text-sm hover:text-blue-700 transition-all duration-300 group">
+                  See study results <i class="fas fa-chevron-right ml-1.5 transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                </a>
               </div>
             </div>
           </div>
         </section>
         
         <!-- Visualization Features -->
-        <section class="feature-section bg-light">
-          <div class="container">
-            <div class="section-header">
-              <h2 class="section-title">Advanced Visualization</h2>
-              <p class="section-subtitle">See beyond the diagnosis with our comprehensive visualization tools that highlight fracture locations and provide detailed insights</p>
+        <section class="py-24 bg-gray-50 border-b border-gray-100">
+          <div class="w-[90%] max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+              <h2 class="text-4xl font-bold mb-4">Advanced Visualization</h2>
+              <p class="text-gray-600 text-lg">See beyond the diagnosis with our comprehensive visualization tools that highlight fracture locations and provide detailed insights</p>
             </div>
             
-            <div class="feature-items">
-              <div class="feature-item">
-                <div class="feature-icon">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+              <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 pt-6 relative before:content-[''] before:absolute before:top-0 before:left-0 before:w-10 before:h-[3px] before:bg-gradient-to-r before:from-blue-500 before:to-cyan-400">
+                <div class="w-[70px] h-[70px] flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-300 to-blue-500 text-white text-3xl mb-6">
                   <i class="fas fa-map-marked-alt"></i>
                 </div>
-                <h3 class="feature-title">Fracture Mapping</h3>
-                <p class="feature-description">Our system precisely maps the location and extent of fractures on the X-ray image, providing clear visual indicators for proper assessment.</p>
-                <a href="#" class="feature-link">View examples <i class="fas fa-chevron-right"></i></a>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Fracture Mapping</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                  Our system precisely maps the location and extent of fractures on the X-ray image, providing clear visual indicators for proper assessment.
+                </p>
+                <a href="#" class="text-blue-500 font-semibold inline-flex items-center text-sm hover:text-blue-700 transition-all duration-300 group">
+                  View examples <i class="fas fa-chevron-right ml-1.5 transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                </a>
               </div>
               
-              <div class="feature-item">
-                <div class="feature-icon">
+              <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 pt-6 relative before:content-[''] before:absolute before:top-0 before:left-0 before:w-10 before:h-[3px] before:bg-gradient-to-r before:from-blue-500 before:to-cyan-400">
+                <div class="w-[70px] h-[70px] flex items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 text-white text-3xl mb-6">
                   <i class="fas fa-layer-group"></i>
                 </div>
-                <h3 class="feature-title">Grad-CAM Technology</h3>
-                <p class="feature-description">Visualize exactly what our AI is focusing on with Gradient-weighted Class Activation Mapping, bringing transparency to the diagnostic process.</p>
-                <a href="./gradcam.html" class="feature-link">Explore Grad-CAM <i class="fas fa-chevron-right"></i></a>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Grad-CAM Technology</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                  Visualize exactly what our AI is focusing on with Gradient-weighted Class Activation Mapping, bringing transparency to the diagnostic process.
+                </p>
+                <a href="./gradcam.html" class="text-blue-500 font-semibold inline-flex items-center text-sm hover:text-blue-700 transition-all duration-300 group">
+                  Explore Grad-CAM <i class="fas fa-chevron-right ml-1.5 transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                </a>
               </div>
               
-              <div class="feature-item">
-                <div class="feature-icon">
+              <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 pt-6 relative before:content-[''] before:absolute before:top-0 before:left-0 before:w-10 before:h-[3px] before:bg-gradient-to-r before:from-blue-500 before:to-cyan-400">
+                <div class="w-[70px] h-[70px] flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 text-white text-3xl mb-6">
                   <i class="fas fa-file-medical-alt"></i>
                 </div>
-                <h3 class="feature-title">Detailed Reports</h3>
-                <p class="feature-description">Generate comprehensive reports with annotated images, confidence scores, and recommended follow-up actions for healthcare providers.</p>
-                <a href="#" class="feature-link">Sample report <i class="fas fa-chevron-right"></i></a>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Detailed Reports</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                  Generate comprehensive reports with annotated images, confidence scores, and recommended follow-up actions for healthcare providers.
+                </p>
+                <a href="#" class="text-blue-500 font-semibold inline-flex items-center text-sm hover:text-blue-700 transition-all duration-300 group">
+                  Sample report <i class="fas fa-chevron-right ml-1.5 transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                </a>
               </div>
             </div>
           </div>
         </section>
         
         <!-- Clinical Features -->
-        <section class="feature-section">
-          <div class="container">
-            <div class="section-header">
-              <h2 class="section-title">Clinical Integration</h2>
-              <p class="section-subtitle">BoneDetect seamlessly integrates into existing clinical workflows to enhance efficiency without disrupting established protocols</p>
+        <section class="py-24 border-b border-gray-100">
+          <div class="w-[90%] max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+              <h2 class="text-4xl font-bold mb-4">Clinical Integration</h2>
+              <p class="text-gray-600 text-lg">BoneDetect seamlessly integrates into existing clinical workflows to enhance efficiency without disrupting established protocols</p>
             </div>
             
-            <div class="feature-items">
-              <div class="feature-item">
-                <div class="feature-icon">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+              <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 pt-6 relative before:content-[''] before:absolute before:top-0 before:left-0 before:w-10 before:h-[3px] before:bg-gradient-to-r before:from-blue-500 before:to-cyan-400">
+                <div class="w-[70px] h-[70px] flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-400 to-blue-600 text-white text-3xl mb-6">
                   <i class="fas fa-hospital-user"></i>
                 </div>
-                <h3 class="feature-title">Patient Management</h3>
-                <p class="feature-description">Maintain secure patient records and track diagnostic history with our HIPAA-compliant patient management system.</p>
-                <a href="#" class="feature-link">Learn more <i class="fas fa-chevron-right"></i></a>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Patient Management</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                  Maintain secure patient records and track diagnostic history with our HIPAA-compliant patient management system.
+                </p>
+                <a href="#" class="text-blue-500 font-semibold inline-flex items-center text-sm hover:text-blue-700 transition-all duration-300 group">
+                  Learn more <i class="fas fa-chevron-right ml-1.5 transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                </a>
               </div>
               
-              <div class="feature-item">
-                <div class="feature-icon">
+              <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 pt-6 relative before:content-[''] before:absolute before:top-0 before:left-0 before:w-10 before:h-[3px] before:bg-gradient-to-r before:from-blue-500 before:to-cyan-400">
+                <div class="w-[70px] h-[70px] flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-300 to-blue-600 text-white text-3xl mb-6">
                   <i class="fas fa-sync-alt"></i>
                 </div>
-                <h3 class="feature-title">EMR Integration</h3>
-                <p class="feature-description">Connect directly with major Electronic Medical Record systems through our secure API, enabling seamless data exchange and documentation.</p>
-                <a href="#" class="feature-link">Compatible systems <i class="fas fa-chevron-right"></i></a>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">EMR Integration</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                  Connect directly with major Electronic Medical Record systems through our secure API, enabling seamless data exchange and documentation.
+                </p>
+                <a href="#" class="text-blue-500 font-semibold inline-flex items-center text-sm hover:text-blue-700 transition-all duration-300 group">
+                  Compatible systems <i class="fas fa-chevron-right ml-1.5 transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                </a>
               </div>
               
-              <div class="feature-item">
-                <div class="feature-icon">
+              <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 pt-6 relative before:content-[''] before:absolute before:top-0 before:left-0 before:w-10 before:h-[3px] before:bg-gradient-to-r before:from-blue-500 before:to-cyan-400">
+                <div class="w-[70px] h-[70px] flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-400 to-blue-700 text-white text-3xl mb-6">
                   <i class="fas fa-user-md"></i>
                 </div>
-                <h3 class="feature-title">Collaborative Tools</h3>
-                <p class="feature-description">Share results securely with colleagues for second opinions or consultations, facilitating better team-based care decisions.</p>
-                <a href="#" class="feature-link">See how it works <i class="fas fa-chevron-right"></i></a>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Collaborative Tools</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                  Share results securely with colleagues for second opinions or consultations, facilitating better team-based care decisions.
+                </p>
+                <a href="#" class="text-blue-500 font-semibold inline-flex items-center text-sm hover:text-blue-700 transition-all duration-300 group">
+                  See how it works <i class="fas fa-chevron-right ml-1.5 transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                </a>
               </div>
             </div>
           </div>
         </section>
         
         <!-- Stats Section styled like about page -->
-        <section class="stats-section">
-          <div class="container">
-            <div class="section-header">
-              <h2 class="section-title">Our Impact</h2>
-              <p class="section-subtitle">The real-world difference we're making in healthcare</p>
+        <section class="py-24 bg-gray-50">
+          <div class="w-[90%] max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+              <h2 class="text-4xl font-bold mb-4">Our Impact</h2>
+              <p class="text-gray-600 text-lg">The real-world difference we're making in healthcare</p>
             </div>
 
-            <div class="stats-row">
-              <div class="stat-block">
-                <div class="stat-icon">
+            <div class="flex flex-wrap justify-between">
+              <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 w-full sm:w-1/2 lg:w-1/4 mb-12 flex flex-col items-center">
+                <div class="w-16 h-16 flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-400 to-cyan-400 rotate-[-5deg] text-white text-xl mb-5 shadow-lg">
                   <i class="fas fa-x-ray"></i>
                 </div>
-                <div class="stat-number">10,000+</div>
-                <div class="stat-label">X-rays Analyzed</div>
+                <div class="text-5xl font-extrabold mb-2 bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text" data-target="10000">0</div>
+                <div class="text-lg text-gray-600 font-medium">X-rays Analyzed</div>
               </div>
 
-              <div class="stat-block">
-                <div class="stat-icon">
+              <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 w-full sm:w-1/2 lg:w-1/4 mb-12 flex flex-col items-center">
+                <div class="w-16 h-16 flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-400 to-cyan-400 rotate-[-5deg] text-white text-xl mb-5 shadow-lg">
                   <i class="fas fa-hospital-user"></i>
                 </div>
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Healthcare Professionals</div>
+                <div class="text-5xl font-extrabold mb-2 bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text" data-target="500">0</div>
+                <div class="text-lg text-gray-600 font-medium">Healthcare Professionals</div>
               </div>
 
-              <div class="stat-block">
-                <div class="stat-icon">
+              <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 w-full sm:w-1/2 lg:w-1/4 mb-12 flex flex-col items-center">
+                <div class="w-16 h-16 flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-400 to-cyan-400 rotate-[-5deg] text-white text-xl mb-5 shadow-lg">
                   <i class="fas fa-hospital"></i>
                 </div>
-                <div class="stat-number">42</div>
-                <div class="stat-label">Partner Hospitals</div>
+                <div class="text-5xl font-extrabold mb-2 bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text" data-target="42">0</div>
+                <div class="text-lg text-gray-600 font-medium">Partner Hospitals</div>
               </div>
 
-              <div class="stat-block">
-                <div class="stat-icon">
+              <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 w-full sm:w-1/2 lg:w-1/4 mb-12 flex flex-col items-center">
+                <div class="w-16 h-16 flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-400 to-cyan-400 rotate-[-5deg] text-white text-xl mb-5 shadow-lg">
                   <i class="fas fa-check-circle"></i>
                 </div>
-                <div class="stat-number">99.8%</div>
-                <div class="stat-label">Detection Accuracy</div>
+                <div class="text-5xl font-extrabold mb-2 bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text" data-target="99.8">0</div>
+                <div class="text-lg text-gray-600 font-medium">Detection Accuracy</div>
               </div>
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </main>
 
     <!-- FOOTER -->
@@ -611,54 +283,14 @@
     <script src="nav-handler.js"></script>
     <script src="footer-handler.js"></script>
     <script>
-      // Header scroll effect
-      window.addEventListener('scroll', () => {
-        const header = document.getElementById('header');
-        if (window.scrollY > 50) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
-      });
-
-      // Mobile menu toggle
-      const mobileMenuButton = document.querySelector('.mobile-menu-button');
-      const mobileNavClose = document.querySelector('.mobile-nav-close');
-      const mobileNav = document.querySelector('.mobile-nav');
-
-      if (mobileMenuButton) {
-        mobileMenuButton.addEventListener('click', () => {
-          mobileNav.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        });
-      }
-
-      if (mobileNavClose) {
-        mobileNavClose.addEventListener('click', () => {
-          mobileNav.classList.remove('active');
-          document.body.style.overflow = '';
-        });
-      }
-
-      // Close mobile nav when clicking a link
-      const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
-      if (mobileNavLinks.length > 0) {
-        mobileNavLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            mobileNav.classList.remove('active');
-            document.body.style.overflow = '';
-          });
-        });
-      }
-
-      // Animation on scroll with Intersection Observer
-      const animatedSections = document.querySelectorAll('.feature-item, .stat-block');
+      // Animation on scroll
+      const animatedSections = document.querySelectorAll('.opacity-0.transform');
       
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.remove('opacity-0', 'translate-y-8');
+            entry.target.classList.add('opacity-100', 'translate-y-0');
             observer.unobserve(entry.target);
           }
         });
@@ -668,57 +300,50 @@
         observer.observe(el);
       });
 
-      // Stats counter animation for the new statistics format
-      const statsSection = document.querySelector('.stats-section');
-      const statNumbers = document.querySelectorAll('.stat-number');
+      // Stats counter animation
+      const statsSection = document.querySelector('section.py-24.bg-gray-50');
+      const statNumbers = document.querySelectorAll('[data-target]');
       let animated = false;
 
       const statsObserver = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && !animated) {
           animated = true;
-          
-          // Animate the numbers when they come into view
-          statNumbers.forEach(statEl => {
-            const value = statEl.textContent;
-            const hasPlus = value.includes('+');
-            const numericValue = parseFloat(value.replace(/[^\d.-]/g, ''));
-            
-            if (isNaN(numericValue)) return;
-            
-            // Reset to zero
-            statEl.textContent = '0';
-            
-            // Animate up to the target number
-            let start = 0;
-            const end = numericValue;
-            const duration = 2000;
-            const startTime = performance.now();
-            
-            function updateCounter(currentTime) {
-              const elapsedTime = currentTime - startTime;
-              const progress = Math.min(elapsedTime / duration, 1);
-              // Using cubic easing for a nice effect
-              const easeProgress = 1 - Math.pow(1 - progress, 3);
-              
-              const value = Math.floor(easeProgress * end);
-              
-              // Format the number appropriately
-              statEl.textContent = value.toString() + (hasPlus ? '+' : '');
-              
-              if (progress < 1) {
-                requestAnimationFrame(updateCounter);
-              } else {
-                statEl.textContent = numericValue.toString() + (hasPlus ? '+' : '');
-              }
-            }
-            
-            requestAnimationFrame(updateCounter);
-          });
+          animateNumbers();
         }
       }, { threshold: 0.5 });
 
       if (statsSection) {
         statsObserver.observe(statsSection);
+      }
+
+      function animateNumbers() {
+        statNumbers.forEach(statNumber => {
+          const target = parseFloat(statNumber.dataset.target);
+          const duration = 2000; 
+          const startTime = performance.now();
+          
+          function updateNumber(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easing = 1 - Math.pow(1 - progress, 3); // Cubic ease-out
+            
+            const currentValue = easing * target;
+            
+            if (Number.isInteger(target)) {
+              statNumber.textContent = Math.floor(currentValue).toLocaleString();
+            } else {
+              statNumber.textContent = currentValue.toFixed(1);
+            }
+            
+            if (progress < 1) {
+              requestAnimationFrame(updateNumber);
+            } else {
+              statNumber.textContent = target % 1 === 0 ? target : target.toFixed(1);
+            }
+          }
+          
+          requestAnimationFrame(updateNumber);
+        });
       }
     </script>
   </body>

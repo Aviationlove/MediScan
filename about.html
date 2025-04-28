@@ -4,628 +4,71 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MediScan | About Us</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="footer-styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <style>
-      /* Custom About Page Styles */
-      .about-hero {
-        padding: 12rem 0 6rem;
-        position: relative;
-        overflow: hidden;
-        background: linear-gradient(135deg, var(--surface-2) 0%, var(--white) 100%);
-      }
-      
-      .about-hero-shape {
-        position: absolute;
-        top: -50%;
-        right: -20%;
-        width: 80%;
-        height: 200%;
-        background: radial-gradient(circle at center, rgba(0, 98, 255, 0.05) 0%, rgba(234, 239, 255, 0) 70%);
-        border-radius: 50%;
-        z-index: 0;
-        animation: float 10s ease-in-out infinite;
-      }
-      
-      .about-hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-      }
-      
-      .about-subtitle {
-        font-size: 1.25rem;
-        color: var(--primary);
-        margin-bottom: 1rem;
-        font-weight: 600;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-      }
-      
-      .about-title {
-        font-size: 3rem;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-        font-weight: 800;
-        background: linear-gradient(90deg, var(--text) 0%, var(--primary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      
-      .about-description {
-        font-size: 1.25rem;
-        color: var(--text-light);
-        margin-bottom: 2.5rem;
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-      .about-section {
-        padding: 6rem 0;
-        position: relative;
-      }
-      
-      .about-section.bg-light {
-        background-color: var(--surface-2);
-      }
-      
-      .section-header {
-        text-align: center;
-        max-width: 700px;
-        margin: 0 auto 4rem;
-      }
-      
-      .section-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: var(--text);
-      }
-      
-      .section-subtitle {
-        font-size: 1.1rem;
-        color: var(--text-light);
-      }
-      
-      /* Mission & Vision Styles - Modern Flowing Design */
-      .mission-vision-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6rem;
-        margin-bottom: 4rem;
-        position: relative;
-      }
-      
-      .mission-vision-container::after {
-        content: "";
-        position: absolute;
-        top: 10%;
-        left: 50%;
-        height: 80%;
-        width: 1px;
-        background: linear-gradient(to bottom, transparent, var(--primary-light), transparent);
-      }
-      
-      .mission-content, .vision-content {
-        position: relative;
-      }
-      
-      .mv-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 60px;
-        height: 60px;
-        margin-bottom: 1.5rem;
-        font-size: 1.75rem;
-        color: var(--primary);
-        position: relative;
-        background: none;
-      }
-      
-      .mv-icon::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(0, 98, 255, 0.1) 0%, rgba(0, 209, 255, 0.1) 100%);
-        border-radius: 50%;
-        transform: scale(1.2) rotate(-15deg);
-        z-index: -1;
-      }
-      
-      .mv-title {
-        font-size: 1.75rem;
-        margin-bottom: 1rem;
-        font-weight: 700;
-        color: var(--text);
-        position: relative;
-        display: inline-block;
-      }
-      
-      .mv-title::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 40px;
-        height: 3px;
-        background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-      }
-      
-      .mv-text {
-        color: var(--text-light);
-        font-size: 1.1rem;
-        line-height: 1.6;
-      }
-      
-      /* Values Section - Modern Flowing Design */
-      .values-container {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 4rem 2rem;
-      }
-      
-      .value-item {
-        grid-column: span 2;
-        position: relative;
-        transition: transform 0.3s ease;
-      }
-      
-      .value-item:hover {
-        transform: translateY(-8px);
-      }
-      
-      .value-icon {
-        width: 60px;
-        height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-        font-size: 1.5rem;
-        position: relative;
-        color: var(--primary);
-      }
-      
-      .value-icon::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(0, 98, 255, 0.08) 0%, rgba(0, 209, 255, 0.08) 100%);
-        border-radius: 50%;
-        transform: scale(1.2);
-        z-index: -1;
-      }
-      
-      .value-icon::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
-        bottom: -15px;
-        left: 0;
-      }
-      
-      .value-title {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        font-weight: 600;
-        color: var(--text);
-        position: relative;
-        display: inline-block;
-      }
-      
-      .value-description {
-        color: var(--text-light);
-        font-size: 1rem;
-        line-height: 1.6;
-      }
-      
-      /* Timeline Section - Modern Flowing Design */
-      .timeline {
-        position: relative;
-        max-width: 1100px;
-        margin: 3rem auto;
-        padding: 2rem 0;
-      }
-      
-      .timeline::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 50%;
-        margin-left: -1px;
-        width: 1px;
-        height: 100%;
-        background: linear-gradient(to bottom, transparent, var(--primary), transparent);
-      }
-      
-      .timeline-item {
-        position: relative;
-        margin-bottom: 6rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-      }
-      
-      .timeline-item:last-child {
-        margin-bottom: 0;
-      }
-      
-      .timeline-item:nth-child(odd) .timeline-content {
-        grid-column: 2;
-        grid-row: 1;
-        padding-left: 4rem;
-        text-align: left;
-      }
-      
-      .timeline-item:nth-child(even) .timeline-content {
-        grid-column: 1;
-        grid-row: 1;
-        padding-right: 4rem;
-        text-align: right;
-      }
-      
-      .timeline-content {
-        position: relative;
-        transition: transform 0.3s ease;
-      }
-      
-      .timeline-item:nth-child(odd) .timeline-content:hover {
-        transform: translateX(10px);
-      }
-      
-      .timeline-item:nth-child(even) .timeline-content:hover {
-        transform: translateX(-10px);
-      }
-      
-      .timeline-year {
-        position: absolute;
-        top: 50%;
-        color: var(--primary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        transform: translateY(-50%);
-        z-index: 2;
-        font-size: 2rem;
-        background: none;
-      }
-      
-      .timeline-item:nth-child(odd) .timeline-year {
-        left: -80px;
-      }
-      
-      .timeline-item:nth-child(even) .timeline-year {
-        right: -80px;
-      }
-      
-      .timeline-item::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-        transform: translate(-50%, -50%);
-        z-index: 1;
-        box-shadow: 0 0 0 5px rgba(0, 98, 255, 0.1);
-      }
-      
-      .timeline-title {
-        font-size: 1.5rem;
-        margin-bottom: 0.75rem;
-        font-weight: 600;
-        color: var(--primary);
-        position: relative;
-        display: inline-block;
-      }
-      
-      .timeline-item:nth-child(odd) .timeline-title::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 50px;
-        height: 2px;
-        background: linear-gradient(90deg, var(--primary), transparent);
-      }
-      
-      .timeline-item:nth-child(even) .timeline-title::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        right: 0;
-        width: 50px;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--primary));
-      }
-      
-      .timeline-description {
-        color: var(--text-light);
-        font-size: 1rem;
-        line-height: 1.6;
-      }
-      
-      /* Stats Section - Modern Flowing Design */
-      .stats-row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        position: relative;
-        padding: 2rem 0;
-      }
-      
-      .stat-block {
-        flex: 1;
-        min-width: 200px;
-        padding: 0 2rem;
-        margin-bottom: 2rem;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transition: transform 0.3s ease;
-      }
-      
-      .stat-block:hover {
-        transform: translateY(-10px);
-      }
-      
-      .stat-block::after {
-        content: "";
-        position: absolute;
-        top: 10%;
-        right: 0;
-        width: 1px;
-        height: 80%;
-        background: linear-gradient(to bottom, transparent, var(--primary-light) 30%, var(--primary-light) 70%, transparent);
-        opacity: 0.5;
-      }
-      
-      .stat-block:last-child::after {
-        display: none;
-      }
-      
-      .stat-icon {
-        position: relative;
-        width: auto;
-        height: auto;
-        border-radius: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.2rem;
-        color: var(--primary);
-        font-size: 2.5rem;
-        background: none;
-        transform: none;
-      }
-      
-      .stat-icon::before {
-        content: "";
-        position: absolute;
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, rgba(0, 98, 255, 0.05) 0%, rgba(0, 209, 255, 0.05) 100%);
-        border-radius: 50%;
-        transform: scale(1) rotate(-15deg);
-        z-index: -1;
-      }
-      
-      .stat-number {
-        font-size: 3.5rem;
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-        background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        line-height: 1;
-      }
-      
-      .stat-label {
-        color: var(--text-light);
-        font-size: 1.1rem;
-        font-weight: 500;
-        text-align: center;
-        position: relative;
-      }
-      
-      .stat-label::after {
-        content: "";
-        position: absolute;
-        bottom: -12px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 40px;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--primary), transparent);
-      }
-      
-      .team-preview {
-        margin-top: 5rem;
-        text-align: center;
-        position: relative;
-        padding-top: 3rem;
-      }
-      
-      .team-preview::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 200px;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
-      }
-      
-      .team-cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.75rem;
-        background: none;
-        color: var(--primary);
-        border: 1px solid var(--primary);
-        border-radius: 50px;
-        padding: 1rem 2.5rem;
-        font-size: 1.1rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-      }
-      
-      .team-cta::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 100%;
-        background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
-        transition: all 0.3s ease;
-        z-index: -1;
-      }
-      
-      .team-cta:hover {
-        color: white;
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 98, 255, 0.15);
-      }
-      
-      .team-cta:hover::before {
-        width: 100%;
-      }
-      
-      @media (max-width: 992px) {
-        .about-title {
-          font-size: 2.5rem;
-        }
-        
-        .mission-vision-container {
-          grid-template-columns: 1fr;
-          gap: 4rem;
-        }
-        
-        .values-container {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        
-        .value-item {
-          grid-column: span 1;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              blue: {
+                50: '#EAEFFF',
+                100: '#D5DEFF',
+                200: '#B3C5FF',
+                300: '#89A8FF',
+                400: '#5E7BFE',
+                500: '#0062FF',
+                600: '#0048c2',
+                700: '#003494',
+                800: '#002266',
+                900: '#001133',
+              },
+              cyan: {
+                400: '#00D1FF',
+                500: '#00A0FF',
+              },
+              gray: {
+                50: '#F5F7FF',
+                800: '#15173D',
+                600: '#596080',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            animation: {
+              'float': 'float 10s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%': { transform: 'translateY(0) rotate(0)' },
+                '50%': { transform: 'translateY(-30px) rotate(8deg)' },
+                '100%': { transform: 'translateY(0) rotate(0)' },
+              }
+            }
+          }
         }
       }
-      
-      @media (max-width: 768px) {
-        .about-hero {
-          padding: 9rem 0 4rem;
-        }
-        
-        .about-title {
-          font-size: 2.2rem;
-        }
-        
-        .about-description {
-          font-size: 1.1rem;
-        }
-        
-        .section-title {
-          font-size: 2rem;
-        }
-        
-        .values-container {
-          grid-template-columns: 1fr;
-        }
-        
-        .timeline::before {
-          left: 30px;
-        }
-        
-        .timeline-item {
-          grid-template-columns: 1fr;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content,
-        .timeline-item:nth-child(even) .timeline-content {
-          grid-column: 1;
-          grid-row: 1;
-          padding-left: 60px;
-          padding-right: 0;
-          text-align: left;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-year,
-        .timeline-item:nth-child(even) .timeline-year {
-          left: 0;
-          top: 0;
-          transform: none;
-          width: 80px;
-        }
-        
-        .timeline-item::after {
-          left: 30px;
-        }
-        
-        .stat-block::after {
-          display: none;
-        }
-        
-        .stat-block {
-          flex-basis: 50%;
-        }
-      }
-      
-      @media (max-width: 576px) {
-        .stat-block {
-          flex-basis: 100%;
-        }
-      }
-      
-      /* Animations */
-      @keyframes float {
-        0% {
-          transform: translateY(0) rotate(0);
-        }
-        50% {
-          transform: translateY(-30px) rotate(8deg);
-        }
-        100% {
-          transform: translateY(0) rotate(0);
-        }
-      }
-    </style>
+    </script>
   </head>
 
-  <body>
+  <body class="bg-gray-50 text-gray-800 font-sans">
     <!-- NAVIGATION PLACEHOLDER -->
     <div id="nav-placeholder"></div>
 
     <!-- CONTENT SECTIONS -->
-    <main class="about-page">
+    <main>
       <!-- ABOUT HERO SECTION -->
-      <section class="about-hero">
-        <div class="about-hero-shape"></div>
-        <div class="container">
-          <div class="about-hero-content">
-            <p class="about-subtitle">Our Story</p>
-            <h1 class="about-title">Revolutionizing Medical Imaging Analysis</h1>
-            <p class="about-description">
+      <section class="pt-48 pb-24 relative overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+        <div class="absolute top-[-50%] right-[-20%] w-4/5 h-[200%] bg-[radial-gradient(circle_at_center,rgba(0,98,255,0.05)_0%,rgba(234,239,255,0)_70%)] rounded-full z-0 animate-float"></div>
+        <div class="w-[90%] max-w-7xl mx-auto">
+          <div class="max-w-3xl mx-auto text-center relative z-10">
+            <p class="text-blue-500 text-lg font-semibold uppercase tracking-wide mb-4">Our Story</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-gray-800 to-blue-500">Revolutionizing Medical Imaging Analysis</h1>
+            <p class="text-gray-600 text-xl mb-10 max-w-2xl mx-auto">
               Using advanced artificial intelligence and machine learning to transform how healthcare professionals detect, diagnose, and treat medical conditions with unparalleled speed and accuracy.
             </p>
           </div>
@@ -633,36 +76,40 @@
       </section>
 
       <!-- MISSION & VISION SECTION -->
-      <section class="about-section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Mission & Vision</h2>
-            <p class="section-subtitle">Our purpose and driving ambition in healthcare innovation</p>
+      <section class="py-24">
+        <div class="w-[90%] max-w-7xl mx-auto">
+          <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-4xl font-bold mb-4">Mission & Vision</h2>
+            <p class="text-gray-600 text-lg">Our purpose and driving ambition in healthcare innovation</p>
           </div>
 
-          <div class="mission-vision-container">
-            <div class="mission-content">
-              <div class="mv-icon">
-                <i class="fas fa-bullseye"></i>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 relative">
+            <div class="hidden lg:block absolute top-[10%] left-1/2 h-4/5 w-px bg-gradient-to-b from-transparent via-blue-200 to-transparent"></div>
+            
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500">
+              <div class="inline-flex items-center justify-center w-16 h-16 mb-6 relative">
+                <div class="absolute inset-0 bg-blue-100/50 rounded-full scale-125 -rotate-15"></div>
+                <i class="fas fa-bullseye text-2xl text-blue-500 relative z-10"></i>
               </div>
-              <h3 class="mv-title">Our Mission</h3>
-              <p class="mv-text">
+              <h3 class="text-2xl font-bold mb-4 relative inline-block text-gray-800 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-10 after:h-[3px] after:bg-gradient-to-r after:from-blue-500 after:to-cyan-400">Our Mission</h3>
+              <p class="text-gray-600 text-lg leading-relaxed mb-4">
                 To leverage cutting-edge AI technology to improve bone fracture detection accuracy, reduce diagnostic time, and enhance patient outcomes by providing healthcare professionals with reliable, accessible diagnostic support tools.
               </p>
-              <p class="mv-text">
+              <p class="text-gray-600 text-lg leading-relaxed">
                 We believe in democratizing access to advanced medical diagnostic capabilities, making them available to healthcare providers everywhere, regardless of resource constraints or geographical location.
               </p>
             </div>
 
-            <div class="vision-content">
-              <div class="mv-icon">
-                <i class="fas fa-eye"></i>
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500">
+              <div class="inline-flex items-center justify-center w-16 h-16 mb-6 relative">
+                <div class="absolute inset-0 bg-blue-100/50 rounded-full scale-125 -rotate-15"></div>
+                <i class="fas fa-eye text-2xl text-blue-500 relative z-10"></i>
               </div>
-              <h3 class="mv-title">Our Vision</h3>
-              <p class="mv-text">
+              <h3 class="text-2xl font-bold mb-4 relative inline-block text-gray-800 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-10 after:h-[3px] after:bg-gradient-to-r after:from-blue-500 after:to-cyan-400">Our Vision</h3>
+              <p class="text-gray-600 text-lg leading-relaxed mb-4">
                 To create a world where AI seamlessly integrates with medical expertise, where cutting-edge technology enhances human capabilities rather than replacing them, enabling more accurate and timely diagnoses for patients worldwide.
               </p>
-              <p class="mv-text">
+              <p class="text-gray-600 text-lg leading-relaxed">
                 We envision a healthcare future where bone fractures are identified with near-perfect accuracy in seconds, reducing patient suffering and improving treatment outcomes across all healthcare settings.
               </p>
             </div>
@@ -671,70 +118,76 @@
       </section>
 
       <!-- CORE VALUES SECTION -->
-      <section class="about-section bg-light">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Our Core Values</h2>
-            <p class="section-subtitle">The principles that guide everything we do</p>
+      <section class="py-24 bg-gray-50">
+        <div class="w-[90%] max-w-7xl mx-auto">
+          <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-4xl font-bold mb-4">Our Core Values</h2>
+            <p class="text-gray-600 text-lg">The principles that guide everything we do</p>
           </div>
 
-          <div class="values-container">
-            <div class="value-item">
-              <div class="value-icon">
-                <i class="fas fa-microscope"></i>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2">
+              <div class="inline-flex items-center justify-center w-16 h-16 mb-6 relative">
+                <div class="absolute inset-0 bg-blue-100/30 rounded-full scale-125"></div>
+                <i class="fas fa-microscope text-2xl text-blue-500 relative z-10"></i>
               </div>
-              <h3 class="value-title">Innovation</h3>
-              <p class="value-description">
+              <h3 class="text-xl font-semibold mb-3 text-gray-800 relative inline-block after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-10 after:h-[2px] after:bg-gradient-to-r after:from-blue-500 after:to-transparent">Innovation</h3>
+              <p class="text-gray-600 leading-relaxed">
                 We continuously push the boundaries of AI technology to develop cutting-edge solutions that address real medical challenges and improve healthcare delivery systems.
               </p>
             </div>
 
-            <div class="value-item">
-              <div class="value-icon">
-                <i class="fas fa-shield-alt"></i>
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2">
+              <div class="inline-flex items-center justify-center w-16 h-16 mb-6 relative">
+                <div class="absolute inset-0 bg-blue-100/30 rounded-full scale-125"></div>
+                <i class="fas fa-shield-alt text-2xl text-blue-500 relative z-10"></i>
               </div>
-              <h3 class="value-title">Reliability</h3>
-              <p class="value-description">
+              <h3 class="text-xl font-semibold mb-3 text-gray-800 relative inline-block after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-10 after:h-[2px] after:bg-gradient-to-r after:from-blue-500 after:to-transparent">Reliability</h3>
+              <p class="text-gray-600 leading-relaxed">
                 We are committed to developing robust, accurate, and dependable medical diagnostic tools that healthcare professionals can trust with their patients' wellbeing.
               </p>
             </div>
 
-            <div class="value-item">
-              <div class="value-icon">
-                <i class="fas fa-users"></i>
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2">
+              <div class="inline-flex items-center justify-center w-16 h-16 mb-6 relative">
+                <div class="absolute inset-0 bg-blue-100/30 rounded-full scale-125"></div>
+                <i class="fas fa-users text-2xl text-blue-500 relative z-10"></i>
               </div>
-              <h3 class="value-title">Accessibility</h3>
-              <p class="value-description">
+              <h3 class="text-xl font-semibold mb-3 text-gray-800 relative inline-block after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-10 after:h-[2px] after:bg-gradient-to-r after:from-blue-500 after:to-transparent">Accessibility</h3>
+              <p class="text-gray-600 leading-relaxed">
                 We believe in making advanced diagnostic technology accessible to medical professionals everywhere, regardless of resource constraints or geographical barriers.
               </p>
             </div>
 
-            <div class="value-item">
-              <div class="value-icon">
-                <i class="fas fa-heartbeat"></i>
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2">
+              <div class="inline-flex items-center justify-center w-16 h-16 mb-6 relative">
+                <div class="absolute inset-0 bg-blue-100/30 rounded-full scale-125"></div>
+                <i class="fas fa-heartbeat text-2xl text-blue-500 relative z-10"></i>
               </div>
-              <h3 class="value-title">Patient-Centered</h3>
-              <p class="value-description">
+              <h3 class="text-xl font-semibold mb-3 text-gray-800 relative inline-block after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-10 after:h-[2px] after:bg-gradient-to-r after:from-blue-500 after:to-transparent">Patient-Centered</h3>
+              <p class="text-gray-600 leading-relaxed">
                 We place patients at the heart of everything we do, designing our solutions to ultimately improve their care, recovery, and quality of life.
               </p>
             </div>
 
-            <div class="value-item">
-              <div class="value-icon">
-                <i class="fas fa-lock"></i>
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2">
+              <div class="inline-flex items-center justify-center w-16 h-16 mb-6 relative">
+                <div class="absolute inset-0 bg-blue-100/30 rounded-full scale-125"></div>
+                <i class="fas fa-lock text-2xl text-blue-500 relative z-10"></i>
               </div>
-              <h3 class="value-title">Security</h3>
-              <p class="value-description">
+              <h3 class="text-xl font-semibold mb-3 text-gray-800 relative inline-block after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-10 after:h-[2px] after:bg-gradient-to-r after:from-blue-500 after:to-transparent">Security</h3>
+              <p class="text-gray-600 leading-relaxed">
                 We are dedicated to maintaining the highest standards of data security and privacy protections, ensuring complete confidentiality of all medical information.
               </p>
             </div>
 
-            <div class="value-item">
-              <div class="value-icon">
-                <i class="fas fa-handshake"></i>
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2">
+              <div class="inline-flex items-center justify-center w-16 h-16 mb-6 relative">
+                <div class="absolute inset-0 bg-blue-100/30 rounded-full scale-125"></div>
+                <i class="fas fa-handshake text-2xl text-blue-500 relative z-10"></i>
               </div>
-              <h3 class="value-title">Collaboration</h3>
-              <p class="value-description">
+              <h3 class="text-xl font-semibold mb-3 text-gray-800 relative inline-block after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-10 after:h-[2px] after:bg-gradient-to-r after:from-blue-500 after:to-transparent">Collaboration</h3>
+              <p class="text-gray-600 leading-relaxed">
                 We foster partnerships with healthcare institutions, researchers, and technology providers to continuously enhance our solutions and drive industry-wide innovation.
               </p>
             </div>
@@ -743,102 +196,119 @@
       </section>
 
       <!-- TIMELINE SECTION -->
-      <section class="about-section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Our Journey</h2>
-            <p class="section-subtitle">The evolution of MediScan from concept to reality</p>
+      <section class="py-24">
+        <div class="w-[90%] max-w-7xl mx-auto">
+          <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-4xl font-bold mb-4">Our Journey</h2>
+            <p class="text-gray-600 text-lg">The evolution of MediScan from concept to reality</p>
           </div>
 
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <h3 class="timeline-title">Research Begins</h3>
-                <p class="timeline-description">
+          <div class="relative max-w-4xl mx-auto my-12 px-4">
+            <!-- Timeline center line -->
+            <div class="hidden md:block absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-blue-500 to-transparent"></div>
+            
+            <!-- Timeline items -->
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500 relative mb-24 md:grid md:grid-cols-2 md:items-center">
+              <div class="md:pr-16 text-left md:text-right">
+                <h3 class="text-xl font-semibold mb-3 text-blue-600 relative inline-block md:after:content-[''] md:after:absolute md:after:bottom-[-5px] md:after:right-0 md:after:w-12 md:after:h-[2px] md:after:bg-gradient-to-l md:after:from-blue-500 md:after:to-transparent">Research Begins</h3>
+                <p class="text-gray-600 leading-relaxed">
                   Initial research on leveraging deep learning for bone fracture detection. Our team compiled and annotated our first dataset of X-ray images to begin training our AI models.
                 </p>
               </div>
-              <div class="timeline-year">2022</div>
+              <div class="absolute md:static left-0 top-0 text-blue-500 font-bold text-3xl md:pl-16">2022</div>
+              <!-- Circle marker -->
+              <div class="hidden md:block absolute left-1/2 top-[10%] transform -translate-x-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 shadow-[0_0_0_5px_rgba(0,98,255,0.1)]"></div>
             </div>
 
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <h3 class="timeline-title">Prototype Development</h3>
-                <p class="timeline-description">
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500 relative mb-24 md:grid md:grid-cols-2 md:items-center">
+              <div class="md:col-start-2 md:pl-16">
+                <h3 class="text-xl font-semibold mb-3 text-blue-600 relative inline-block after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-12 after:h-[2px] after:bg-gradient-to-r after:from-blue-500 after:to-transparent">Prototype Development</h3>
+                <p class="text-gray-600 leading-relaxed">
                   The first prototype of MediScan was developed with our YOLOv8-based detection algorithm. Initial testing with selected medical partners showed promising results with 95% accuracy.
                 </p>
               </div>
-              <div class="timeline-year">2023</div>
+              <div class="absolute md:static right-0 top-0 text-blue-500 font-bold text-3xl md:text-right md:pr-16">2023</div>
+              <!-- Circle marker -->
+              <div class="hidden md:block absolute left-1/2 top-[10%] transform -translate-x-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 shadow-[0_0_0_5px_rgba(0,98,255,0.1)]"></div>
             </div>
 
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <h3 class="timeline-title">Expanded Capabilities</h3>
-                <p class="timeline-description">
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500 relative mb-24 md:grid md:grid-cols-2 md:items-center">
+              <div class="md:pr-16 text-left md:text-right">
+                <h3 class="text-xl font-semibold mb-3 text-blue-600 relative inline-block md:after:content-[''] md:after:absolute md:after:bottom-[-5px] md:after:right-0 md:after:w-12 md:after:h-[2px] md:after:bg-gradient-to-l md:after:from-blue-500 md:after:to-transparent">Expanded Capabilities</h3>
+                <p class="text-gray-600 leading-relaxed">
                   Enhanced our AI model with Grad CAM visualization for better interpretability. We expanded detection capabilities to cover multiple types of fractures with improved accuracy reaching 97%.
                 </p>
               </div>
-              <div class="timeline-year">2024</div>
+              <div class="absolute md:static left-0 top-0 text-blue-500 font-bold text-3xl md:pl-16">2024</div>
+              <!-- Circle marker -->
+              <div class="hidden md:block absolute left-1/2 top-[10%] transform -translate-x-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 shadow-[0_0_0_5px_rgba(0,98,255,0.1)]"></div>
             </div>
 
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <h3 class="timeline-title">Official Launch</h3>
-                <p class="timeline-description">
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500 relative md:grid md:grid-cols-2 md:items-center">
+              <div class="md:col-start-2 md:pl-16">
+                <h3 class="text-xl font-semibold mb-3 text-blue-600 relative inline-block after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-12 after:h-[2px] after:bg-gradient-to-r after:from-blue-500 after:to-transparent">Official Launch</h3>
+                <p class="text-gray-600 leading-relaxed">
                   Official release of the comprehensive MediScan platform with web-based access, making our technology available to medical professionals worldwide with 99.8% accuracy.
                 </p>
               </div>
-              <div class="timeline-year">2025</div>
+              <div class="absolute md:static right-0 top-0 text-blue-500 font-bold text-3xl md:text-right md:pr-16">2025</div>
+              <!-- Circle marker -->
+              <div class="hidden md:block absolute left-1/2 top-[10%] transform -translate-x-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 shadow-[0_0_0_5px_rgba(0,98,255,0.1)]"></div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- STATS SECTION -->
-      <section class="about-section bg-light">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Our Impact</h2>
-            <p class="section-subtitle">The real-world difference we're making in healthcare</p>
+      <section class="py-24 bg-gray-50">
+        <div class="w-[90%] max-w-7xl mx-auto">
+          <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-4xl font-bold mb-4">Our Impact</h2>
+            <p class="text-gray-600 text-lg">The real-world difference we're making in healthcare</p>
           </div>
 
-          <div class="stats-row">
-            <div class="stat-block">
-              <div class="stat-icon">
-                <i class="fas fa-x-ray"></i>
+          <div class="flex flex-wrap justify-between">
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 w-full sm:w-1/2 lg:w-1/4 mb-12 flex flex-col items-center">
+              <div class="relative text-blue-500 text-4xl mb-5">
+                <div class="absolute w-16 h-16 bg-blue-100/30 rounded-full -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 -rotate-15 scale-100"></div>
+                <i class="fas fa-x-ray relative z-10"></i>
               </div>
-              <div class="stat-number">10,000+</div>
-              <div class="stat-label">X-rays Analyzed</div>
+              <div class="text-5xl font-extrabold mb-2 bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text">10,000+</div>
+              <div class="text-lg text-gray-600 font-medium relative after:content-[''] after:absolute after:bottom-[-12px] after:left-1/2 after:transform after:-translate-x-1/2 after:w-10 after:h-0.5 after:bg-gradient-to-r after:from-transparent after:via-blue-500 after:to-transparent">X-rays Analyzed</div>
             </div>
 
-            <div class="stat-block">
-              <div class="stat-icon">
-                <i class="fas fa-hospital-user"></i>
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 w-full sm:w-1/2 lg:w-1/4 mb-12 flex flex-col items-center">
+              <div class="relative text-blue-500 text-4xl mb-5">
+                <div class="absolute w-16 h-16 bg-blue-100/30 rounded-full -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 -rotate-15 scale-100"></div>
+                <i class="fas fa-hospital-user relative z-10"></i>
               </div>
-              <div class="stat-number">500+</div>
-              <div class="stat-label">Healthcare Professionals</div>
+              <div class="text-5xl font-extrabold mb-2 bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text">500+</div>
+              <div class="text-lg text-gray-600 font-medium relative after:content-[''] after:absolute after:bottom-[-12px] after:left-1/2 after:transform after:-translate-x-1/2 after:w-10 after:h-0.5 after:bg-gradient-to-r after:from-transparent after:via-blue-500 after:to-transparent">Healthcare Professionals</div>
             </div>
 
-            <div class="stat-block">
-              <div class="stat-icon">
-                <i class="fas fa-hospital"></i>
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 w-full sm:w-1/2 lg:w-1/4 mb-12 flex flex-col items-center">
+              <div class="relative text-blue-500 text-4xl mb-5">
+                <div class="absolute w-16 h-16 bg-blue-100/30 rounded-full -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 -rotate-15 scale-100"></div>
+                <i class="fas fa-hospital relative z-10"></i>
               </div>
-              <div class="stat-number">42</div>
-              <div class="stat-label">Partner Hospitals</div>
+              <div class="text-5xl font-extrabold mb-2 bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text">42</div>
+              <div class="text-lg text-gray-600 font-medium relative after:content-[''] after:absolute after:bottom-[-12px] after:left-1/2 after:transform after:-translate-x-1/2 after:w-10 after:h-0.5 after:bg-gradient-to-r after:from-transparent after:via-blue-500 after:to-transparent">Partner Hospitals</div>
             </div>
 
-            <div class="stat-block">
-              <div class="stat-icon">
-                <i class="fas fa-check-circle"></i>
+            <div class="opacity-0 transform translate-y-8 transition-all duration-500 hover:-translate-y-2 w-full sm:w-1/2 lg:w-1/4 mb-12 flex flex-col items-center">
+              <div class="relative text-blue-500 text-4xl mb-5">
+                <div class="absolute w-16 h-16 bg-blue-100/30 rounded-full -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 -rotate-15 scale-100"></div>
+                <i class="fas fa-check-circle relative z-10"></i>
               </div>
-              <div class="stat-number">99.8%</div>
-              <div class="stat-label">Detection Accuracy</div>
+              <div class="text-5xl font-extrabold mb-2 bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text">99.8%</div>
+              <div class="text-lg text-gray-600 font-medium relative after:content-[''] after:absolute after:bottom-[-12px] after:left-1/2 after:transform after:-translate-x-1/2 after:w-10 after:h-0.5 after:bg-gradient-to-r after:from-transparent after:via-blue-500 after:to-transparent">Detection Accuracy</div>
             </div>
           </div>
 
-          <div class="team-preview">
-            <a href="team.html" class="team-cta">
-              Meet Our Team <i class="fas fa-arrow-right"></i>
+          <div class="mt-20 text-center pt-12 border-t border-blue-100">
+            <a href="team.html" class="inline-flex items-center gap-3 px-10 py-4 text-blue-600 font-semibold border-2 border-blue-500 rounded-full hover:bg-blue-600 hover:text-white hover:-translate-y-1 shadow-md hover:shadow-lg transition-all duration-300 group relative overflow-hidden">
+              <span class="absolute inset-0 w-full transform -translate-x-full bg-gradient-to-r from-blue-500 to-blue-600 transition-transform duration-300 ease-out group-hover:translate-x-0 -z-10"></span>
+              Meet Our Team <i class="fas fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
             </a>
           </div>
         </div>
@@ -853,22 +323,19 @@
     <script src="footer-handler.js"></script>
     <script>
       // Animation on scroll
-      const animatedSections = document.querySelectorAll('.mission-content, .vision-content, .value-item, .timeline-item, .stat-block');
+      const animatedSections = document.querySelectorAll('.opacity-0.transform');
       
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.remove('opacity-0', 'translate-y-8');
+            entry.target.classList.add('opacity-100', 'translate-y-0');
             observer.unobserve(entry.target);
           }
         });
       }, { threshold: 0.15 });
       
       animatedSections.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
       });
     </script>

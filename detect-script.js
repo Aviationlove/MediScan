@@ -252,36 +252,24 @@ document.addEventListener('DOMContentLoaded', function() {
         detectionList.innerHTML = '';
         
         if (!detections || detections.length === 0) {
-            detectionList.innerHTML = '<div class="detection-item"><div class="detection-content"><h4>No fractures detected</h4><p>The AI did not detect any fractures in this image.</p></div></div>';
+            detectionList.innerHTML = '<div class="detection-item"><div class="detection-content"><h4 class="text-gray-700 font-medium">No fractures detected</h4><p class="text-gray-600">The analysis did not identify any fractures in this image.</p></div></div>';
             return;
         }
         
         detections.forEach((detection, index) => {
             const confidencePercent = Math.round(detection.confidence * 100);
-            let confidenceClass = 'low';
-            if (confidencePercent >= 80) {
-                confidenceClass = 'high';
-            } else if (confidencePercent >= 50) {
-                confidenceClass = 'medium';
-            }
+            let confidenceClass = confidencePercent >= 80 ? 'high' : confidencePercent >= 50 ? 'medium' : 'low';
             
             const detectionItem = document.createElement('div');
-            detectionItem.className = 'detection-item';
+            detectionItem.className = 'detection-item mb-3 p-3 border-l-4 border-gray-300 bg-gray-50 rounded shadow-sm';
             detectionItem.innerHTML = `
-                <div class="detection-icon">
-                    <i class="fas fa-bone"></i>
-                </div>
                 <div class="detection-content">
-                    <h4>${detection.class} #${index + 1}</h4>
-                    <div class="confidence ${confidenceClass}">
-                        <span>Confidence: ${confidencePercent}%</span>
-                        <div class="confidence-bar">
-                            <div class="confidence-value" style="width: ${confidencePercent}%"></div>
-                        </div>
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-gray-800 font-semibold">${detection.class}</h4>
+                        <span class="badge ${confidenceClass}">${confidencePercent}%</span>
                     </div>
-                    <div class="location-info">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Location: x: ${Math.round(detection.box.x1)}-${Math.round(detection.box.x2)}, y: ${Math.round(detection.box.y1)}-${Math.round(detection.box.y2)}</span>
+                    <div class="location-info text-sm text-gray-600 mt-1">
+                        <span>Location: x:${Math.round(detection.box.x1)}-${Math.round(detection.box.x2)}, y:${Math.round(detection.box.y1)}-${Math.round(detection.box.y2)}</span>
                     </div>
                 </div>
             `;
