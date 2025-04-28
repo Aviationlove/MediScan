@@ -26,6 +26,9 @@
   --font-4xl: 3.5rem;     /* 56px */
   --heading-font: 'Inter', sans-serif;
   --body-font: 'Inter', sans-serif;
+
+  /* Custom animation for detect button */
+  --pulse-color: rgba(0, 98, 255, 0.5);
 }
 
 * {
@@ -59,6 +62,33 @@
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
   100% { transform: translateY(0px); }
+}
+
+/* Button pulse animation */
+.pulse-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0.5rem;
+  border: 3px solid var(--pulse-color);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
 }
 
 body {
@@ -1430,6 +1460,39 @@ html {
   
   .image-container img {
     height: 250px;
+  }
+
+  /* Timeline responsive styling for mobile */
+  .timeline-item {
+    padding-left: 2rem;
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  
+  .timeline-item h3 {
+    padding-top: 0.5rem; /* Add space for the icon */
+  }
+  
+  /* Position the timeline circles on the left for mobile */
+  .timeline-item .absolute {
+    left: 0;
+    top: 0;
+    transform: none;
+    margin-left: 0;
+  }
+  
+  /* Make the circles smaller on mobile */
+  .timeline-item .w-14 {
+    width: 2.5rem;
+  }
+  
+  .timeline-item .h-14 {
+    height: 2.5rem;
+  }
+  
+  /* Adjust text positioning for mobile */
+  .timeline-item p {
+    margin-top: 0.5rem;
   }
 }
 
