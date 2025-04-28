@@ -4,414 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MediScan | Contact Us</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="footer-styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <style>
-      :root {
-        --primary: #0062FF;
-        --primary-dark: #0048c2;
-        --secondary: #EAEFFF;
-        --accent: #00D1FF;
-        --text: #15173D;
-        --text-light: #596080;
-        --surface-1: #FFFFFF;
-        --surface-2: #F5F7FF;
-        --white: #FFFFFF;
-        --heading-font: 'Inter', sans-serif;
-        --body-font: 'Inter', sans-serif;
-        --card-shadow: 0 10px 30px rgba(0, 98, 255, 0.08);
-      }
-
-      /* Page specific styles */
-      body {
-        font-family: var(--body-font);
-        background-color: var(--surface-2);
-        color: var(--text);
-        line-height: 1.6;
-        overflow-x: hidden;
-        margin: 0;
-      }
-
-      /* HEADER AND NAVIGATION - Match with global styles */
-      .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        padding: 1rem 0;
-        background-color: var(--surface-2);
-      }
-
-      .header.scrolled {
-        background-color: var(--surface-2);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-      }
-
-      .active-indicator {
-        display: block;
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background-color: var(--primary);
-      }
-
-      /* Contact Header - Adjust for fixed header */
-      .page-header {
-        padding: 12rem 0 6rem;
-        position: relative;
-        background: linear-gradient(135deg, rgba(245, 247, 255, 0.95) 0%, rgba(234, 239, 255, 0.95) 100%);
-        text-align: center;
-        overflow: hidden;
-      }
-
-      .page-header-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle at center, rgba(0, 98, 255, 0.03) 0%, rgba(234, 239, 255, 0) 70%);
-        z-index: 0;
-      }
-
-      .page-header-content {
-        position: relative;
-        z-index: 1;
-        max-width: 800px;
-        margin: 0 auto;
-        animation: fade-in 1s ease forwards;
-      }
-
-      .page-title {
-        font-size: 3.5rem;
-        line-height: 1.1;
-        margin-bottom: 1.5rem;
-        font-family: var(--heading-font);
-        font-weight: 800;
-        background: linear-gradient(90deg, var(--text) 0%, var(--primary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .page-subtitle {
-        font-size: 1.25rem;
-        color: var(--text-light);
-        max-width: 700px;
-        margin: 0 auto;
-        animation: fade-in 1s ease 0.2s forwards;
-        animation-fill-mode: both;
-      }
-
-      /* Contact Section */
-      .contact-section {
-        padding: 5rem 0;
-        position: relative;
-      }
-
-      .contact-container {
-        width: 90%;
-        max-width: 1400px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        animation: fade-in 1s ease 0.4s forwards;
-        animation-fill-mode: both;
-      }
-
-      /* Contact Form */
-      .contact-form {
-        background: var(--surface-1);
-        border-radius: 20px;
-        padding: 3rem;
-        box-shadow: var(--card-shadow);
-        border: 1px solid rgba(74, 144, 226, 0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .contact-form:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0, 98, 255, 0.12);
-      }
-
-      .form-header {
-        margin-bottom: 2.5rem;
-      }
-
-      .form-title {
-        font-size: 1.75rem;
-        color: var(--text);
-        font-weight: 700;
-        margin-bottom: 1rem;
-        position: relative;
-        display: inline-block;
-      }
-
-      .form-title::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        width: 60px;
-        height: 3px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-      }
-
-      .form-group {
-        margin-bottom: 1.8rem;
-        position: relative;
-      }
-
-      .form-group label {
-        position: absolute;
-        left: 1rem;
-        top: 0.8rem;
-        font-size: 1rem;
-        color: var(--text-light);
-        transition: all 0.2s ease;
-        background: transparent;
-        padding: 0 0.5rem;
-        pointer-events: none;
-      }
-
-      .form-group input:focus ~ label,
-      .form-group input:valid ~ label,
-      .form-group textarea:focus ~ label,
-      .form-group textarea:valid ~ label,
-      .form-group input:not(:placeholder-shown) ~ label,
-      .form-group textarea:not(:placeholder-shown) ~ label {
-        top: -0.5rem;
-        left: 0.8rem;
-        font-size: 0.8rem;
-        color: var(--primary);
-        background: white;
-      }
-
-      .form-group input,
-      .form-group textarea {
-        width: 100%;
-        padding: 1rem 1.5rem;
-        border: 2px solid rgba(74, 144, 226, 0.1);
-        border-radius: 12px;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        background: rgba(255, 255, 255, 0.9);
-      }
-
-      .form-group input::placeholder,
-      .form-group textarea::placeholder {
-        color: transparent;
-      }
-
-      .form-group input:focus,
-      .form-group textarea:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 4px rgba(0, 98, 255, 0.1);
-      }
-
-      .submit-btn {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        color: white;
-        border: none;
-        padding: 1.2rem 2.5rem;
-        border-radius: 50px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        width: 100%;
-        margin-top: 2rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .submit-btn::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transition: 0.5s;
-      }
-
-      .submit-btn:hover::before {
-        left: 100%;
-      }
-
-      .submit-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba(0, 98, 255, 0.25);
-      }
-
-      /* Contact Info Cards */
-      .contact-info {
-        display: flex;
-        flex-direction: column;
-        gap: 1.8rem;
-      }
-
-      .info-card {
-        background: var(--surface-1);
-        border-radius: 16px;
-        padding: 1.8rem;
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(74, 144, 226, 0.08);
-        box-shadow: var(--card-shadow);
-      }
-
-      .info-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(0, 98, 255, 0.12);
-      }
-
-      .info-icon {
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: white;
-      }
-
-      .info-content {
-        flex: 1;
-      }
-
-      .info-content h3 {
-        color: var(--text);
-        margin-bottom: 0.5rem;
-        font-size: 1.2rem;
-        font-weight: 600;
-      }
-
-      .info-content p {
-        color: var(--text-light);
-        font-size: 1rem;
-      }
-
-      /* Location Card */
-      .info-card.location-card {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 1.8rem;
-      }
-
-      .location-header {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .map-container {
-        width: 100%;
-        height: 250px;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        border: 1px solid rgba(74, 144, 226, 0.08);
-      }
-
-      .map-iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
-
-      @keyframes fade-in {
-        0% { opacity: 0; transform: translateY(20px); }
-        100% { opacity: 1; transform: translateY(0); }
-      }
-
-      /* Media Queries */
-      @media (max-width: 992px) {
-        .page-title {
-          font-size: 3rem;
-        }
-        .contact-container {
-          grid-template-columns: 1fr;
-        }
-        .contact-form {
-          order: 1;
-        }
-        .contact-info {
-          order: 2;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              blue: {
+                50: '#EAEFFF',
+                100: '#D5DEFF',
+                200: '#B3C5FF',
+                300: '#89A8FF',
+                400: '#5E7BFE',
+                500: '#0062FF',
+                600: '#0048c2',
+                700: '#003494',
+                800: '#002266',
+                900: '#001133',
+              },
+              cyan: {
+                400: '#00D1FF',
+                500: '#00A0FF',
+              },
+              gray: {
+                50: '#F5F7FF',
+                600: '#596080',
+                800: '#15173D',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            animation: {
+              'float': 'float 10s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%': { transform: 'translateY(0) rotate(0)' },
+                '50%': { transform: 'translateY(-30px) rotate(8deg)' },
+                '100%': { transform: 'translateY(0) rotate(0)' },
+              }
+            }
+          }
         }
       }
-
-      @media (max-width: 768px) {
-        .page-title {
-          font-size: 2.5rem;
-        }
-        .page-header {
-          padding: 10rem 0 4rem;
-        }
-        .contact-form {
-          padding: 2rem;
-        }
-        .form-title {
-          font-size: 1.5rem;
-        }
-        .info-card {
-          padding: 1.5rem;
-        }
-        .map-container {
-          height: 200px;
-        }
-        .submit-btn {
-          padding: 1rem 2rem;
-        }
-      }
-
-      @media (max-width: 576px) {
-        .page-title {
-          font-size: 2rem;
-        }
-        .page-subtitle {
-          font-size: 1rem;
-        }
-        .contact-section {
-          padding: 3rem 0;
-        }
-      }
-    </style>
+    </script>
   </head>
 
-  <body>
+  <body class="bg-gray-50 text-gray-800 font-sans">
     <!-- NAVIGATION PLACEHOLDER -->
     <div id="nav-placeholder"></div>
 
     <!-- CONTENT SECTIONS -->
     <main class="contact-page">
       <!-- Page Header -->
-      <div class="page-header">
-        <div class="page-header-bg"></div>
-        <div class="page-header-content">
-          <h1 class="page-title">Contact Us</h1>
-          <p class="page-subtitle">
+      <div class="pt-32 pb-24 relative bg-gradient-to-br from-gray-50/95 to-blue-50/95">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,98,255,0.03)_0%,rgba(234,239,255,0)_70%)]"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+          <h1 class="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-gray-800 to-blue-600 bg-clip-text text-transparent">Contact Us</h1>
+          <p class="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto">
             Get in touch with our team for any inquiries or support regarding our
             AI-powered medical imaging analysis system.
           </p>
@@ -419,76 +74,108 @@
       </div>
 
       <!-- Contact Section -->
-      <section class="contact-section">
-        <div class="contact-container">
-          <div class="contact-form">
-            <div class="form-header">
-              <h2 class="form-title">Send Us a Message</h2>
-              <p>We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.</p>
+      <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
+          <!-- Contact Form -->
+          <div class="bg-white rounded-3xl p-6 md:p-10 shadow-lg border border-blue-100/30 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+            <div class="mb-10">
+              <h2 class="text-2xl font-bold mb-4 inline-block relative">
+                Send Us a Message
+                <span class="absolute -bottom-2 left-0 w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400"></span>
+              </h2>
+              <p class="text-gray-600">We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.</p>
             </div>
-            <form id="contactForm" onsubmit="return handleSubmit(event)">
-              <div class="form-group">
-                <input type="text" id="name" name="name" placeholder=" " required />
-                <label for="name">Full Name</label>
-              </div>
-
-              <div class="form-group">
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder=" "
+            
+            <form id="contactForm" onsubmit="return handleSubmit(event)" class="space-y-6">
+              <div class="relative">
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
                   required
+                  class="w-full px-6 py-4 bg-white/90 border-2 border-blue-100 rounded-xl text-gray-800 transition-all focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 placeholder-transparent peer"
+                  placeholder="Full Name"
                 />
-                <label for="email">Email Address</label>
+                <label 
+                  for="name" 
+                  class="absolute left-5 -top-2.5 text-sm text-gray-600 bg-white px-2 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500"
+                >Full Name</label>
               </div>
 
-              <div class="form-group">
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  placeholder=" "
+              <div class="relative">
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
                   required
+                  class="w-full px-6 py-4 bg-white/90 border-2 border-blue-100 rounded-xl text-gray-800 transition-all focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 placeholder-transparent peer"
+                  placeholder="Email Address"
                 />
-                <label for="subject">Subject</label>
+                <label 
+                  for="email" 
+                  class="absolute left-5 -top-2.5 text-sm text-gray-600 bg-white px-2 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500"
+                >Email Address</label>
               </div>
 
-              <div class="form-group">
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  placeholder=" "
+              <div class="relative">
+                <input 
+                  type="text" 
+                  id="subject" 
+                  name="subject" 
                   required
+                  class="w-full px-6 py-4 bg-white/90 border-2 border-blue-100 rounded-xl text-gray-800 transition-all focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 placeholder-transparent peer"
+                  placeholder="Subject"
+                />
+                <label 
+                  for="subject" 
+                  class="absolute left-5 -top-2.5 text-sm text-gray-600 bg-white px-2 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500"
+                >Subject</label>
+              </div>
+
+              <div class="relative">
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  rows="5" 
+                  required
+                  class="w-full px-6 py-4 bg-white/90 border-2 border-blue-100 rounded-xl text-gray-800 transition-all focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 placeholder-transparent peer resize-none"
+                  placeholder="Message"
                 ></textarea>
-                <label for="message">Message</label>
+                <label 
+                  for="message" 
+                  class="absolute left-5 -top-2.5 text-sm text-gray-600 bg-white px-2 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500"
+                >Message</label>
               </div>
 
-              <button type="submit" class="submit-btn">
-                <i class="fas fa-paper-plane"></i> Send Message
+              <button 
+                type="submit" 
+                class="w-full py-4 px-8 mt-8 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-full shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group"
+              >
+                <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-all duration-700 ease-out"></span>
+                <i class="fas fa-paper-plane mr-2"></i> Send Message
               </button>
             </form>
           </div>
 
-          <div class="contact-info">
+          <!-- Contact Info -->
+          <div class="flex flex-col gap-6">
             <!-- Location card with map -->
-            <div class="info-card location-card">
-              <div class="location-header">
-                <div class="info-icon">
+            <div class="bg-white rounded-3xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100/30">
+              <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-6">
+                <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 text-white text-xl">
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
-                <div class="info-content">
-                  <h3>Our Location</h3>
-                  <p>
+                <div>
+                  <h3 class="text-lg font-semibold mb-1">Our Location</h3>
+                  <p class="text-gray-600">
                     University of Engineering And Management, Kolkata, West Bengal
                     700160
                   </p>
                 </div>
               </div>
-              <div class="map-container">
+              <div class="w-full h-56 md:h-64 rounded-xl overflow-hidden shadow-md border border-blue-100/30">
                 <iframe
-                  class="map-iframe"
+                  class="w-full h-full"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.0289143399893!2d88.42221827599505!3d22.577380832349447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0275c292d945f7%3A0x2e51592e2ba71d34!2sTechno%20Main%20Salt%20Lake!5e0!3m2!1sen!2sin!4v1699132008622!5m2!1sen!2sin"
                   allowfullscreen=""
                   loading="lazy"
@@ -499,35 +186,35 @@
             </div>
 
             <!-- Email card -->
-            <div class="info-card">
-              <div class="info-icon">
+            <div class="bg-white rounded-3xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100/30 flex items-center gap-5">
+              <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 text-white text-xl">
                 <i class="fas fa-envelope"></i>
               </div>
-              <div class="info-content">
-                <h3>Email Us</h3>
-                <p>support@mediscan.ai</p>
+              <div>
+                <h3 class="text-lg font-semibold mb-1">Email Us</h3>
+                <p class="text-gray-600">support@mediscan.ai</p>
               </div>
             </div>
 
             <!-- Phone card -->
-            <div class="info-card">
-              <div class="info-icon">
+            <div class="bg-white rounded-3xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100/30 flex items-center gap-5">
+              <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 text-white text-xl">
                 <i class="fas fa-phone-alt"></i>
               </div>
-              <div class="info-content">
-                <h3>Call Us</h3>
-                <p>+91 123-456-7890</p>
+              <div>
+                <h3 class="text-lg font-semibold mb-1">Call Us</h3>
+                <p class="text-gray-600">+91 123-456-7890</p>
               </div>
             </div>
 
             <!-- Working hours card -->
-            <div class="info-card">
-              <div class="info-icon">
+            <div class="bg-white rounded-3xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-blue-100/30 flex items-center gap-5">
+              <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-400 text-white text-xl">
                 <i class="fas fa-clock"></i>
               </div>
-              <div class="info-content">
-                <h3>Working Hours</h3>
-                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+              <div>
+                <h3 class="text-lg font-semibold mb-1">Working Hours</h3>
+                <p class="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
               </div>
             </div>
           </div>
@@ -539,8 +226,6 @@
     <div id="footer-placeholder"></div>
 
     <!-- Scripts -->
-    <script src="nav-handler.js"></script>
-    <script src="footer-handler.js"></script>
     <script>
       // Form submission handler
       function handleSubmit(event) {
@@ -550,6 +235,45 @@
         event.target.reset();
         return false;
       }
+      
+      // Animation on scroll
+      document.addEventListener('DOMContentLoaded', function() {
+        const animateOnScroll = (entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('opacity-100', 'translate-y-0');
+              entry.target.classList.remove('opacity-0', 'translate-y-6');
+              observer.unobserve(entry.target);
+            }
+          });
+        };
+        
+        const observer = new IntersectionObserver(animateOnScroll, {
+          root: null,
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px"
+        });
+        
+        // Select elements to animate
+        const contactForm = document.querySelector('.bg-white.rounded-3xl.p-6.md\\:p-10');
+        const contactInfoCards = document.querySelectorAll('.flex.flex-col.gap-6 > div');
+        
+        if (contactForm) {
+          contactForm.classList.add('opacity-0', 'translate-y-6', 'transition-all', 'duration-700');
+          observer.observe(contactForm);
+        }
+        
+        let delay = 0;
+        contactInfoCards.forEach((card, index) => {
+          delay = index * 150;
+          card.classList.add('opacity-0', 'translate-y-6', 'transition-all', 'duration-700');
+          card.style.transitionDelay = `${delay}ms`;
+          observer.observe(card);
+        });
+      });
     </script>
+    
+    <script src="nav-handler.js"></script>
+    <script src="footer-handler.js"></script>
   </body>
 </html>
