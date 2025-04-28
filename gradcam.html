@@ -63,6 +63,61 @@
       }
     }
   </script>
+  <style>
+    /* Fix for timeline mobile view */
+    @media (max-width: 768px) {
+      .timeline-item {
+        margin-left: 3.5rem;
+        position: relative;
+        padding-bottom: 2rem;
+      }
+      
+      .timeline-item h3 {
+        padding-right: 0;
+        text-align: left;
+        padding-top: 0.5rem;
+      }
+      
+      .timeline-item .absolute {
+        left: -3.5rem !important;
+      }
+    }
+
+    /* Timeline mobile responsiveness fixes */
+    @media (max-width: 768px) {
+      /* Fix for timeline items on mobile */
+      .timeline-item {
+        padding-left: 4rem;
+        position: relative;
+        padding-bottom: 2.5rem;
+      }
+      
+      /* Ensure text aligns properly on mobile */
+      .timeline-item h3 {
+        text-align: left;
+        padding-right: 0;
+        padding-left: 0;
+        display: block;
+      }
+      
+      /* Fix icon circles positioning on mobile */
+      .timeline-item .absolute {
+        left: 0 !important;
+        transform: translateX(0) !important;
+        margin-left: 0 !important;
+      }
+      
+      /* Text alignment for all items on mobile */
+      .timeline-item [class*="col-start-"] {
+        padding-left: 0;
+      }
+      
+      .timeline-item [class*="pr-"] {
+        padding-right: 0;
+        text-align: left;
+      }
+    }
+  </style>
 </head>
 <body class="bg-white text-gray-800 font-sans">
   <!-- HEADER -->
@@ -146,8 +201,8 @@
               </p>
             </div>
             
-            <!-- Timeline circle -->
-            <div class="absolute left-1/2 top-0 w-14 h-14 -ml-7 md:ml-0 flex items-center justify-center z-10 transform md:translate-y-0 -translate-y-1/2">
+            <!-- Timeline circle - mobile adjusted positioning -->
+            <div class="absolute left-0 md:left-1/2 top-0 w-14 h-14 flex items-center justify-center z-10 transform md:translate-y-0 -translate-y-1/2 md:-ml-7">
               <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 shadow-[0_0_15px_rgba(0,98,255,0.3)] flex items-center justify-center text-white text-xl">
                 <i class="fas fa-upload"></i>
               </div>
@@ -155,15 +210,15 @@
           </div>
 
           <div class="timeline-item opacity-0 translate-y-8 transition-all duration-800 relative mb-24 md:grid md:grid-cols-2 md:items-center">
-            <div class="md:col-start-2 md:pl-16">
+            <div class="md:col-start-2 md:pl-16 pl-16">
               <h3 class="text-xl font-semibold mb-3 text-gray-800 relative inline-block after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-10 after:h-[3px] after:bg-gradient-to-r after:from-blue-500 after:to-transparent">Feature Detection</h3>
               <p class="text-gray-600">
                 Our AI identifies critical patterns and anomalies in bone structure that might indicate fractures or other abnormalities by comparing with thousands of training examples.
               </p>
             </div>
             
-            <!-- Timeline circle -->
-            <div class="absolute left-1/2 top-0 w-14 h-14 -ml-7 md:ml-0 flex items-center justify-center z-10 transform md:translate-y-0 -translate-y-1/2">
+            <!-- Timeline circle - mobile adjusted positioning -->
+            <div class="absolute left-0 md:left-1/2 top-0 w-14 h-14 flex items-center justify-center z-10 transform md:translate-y-0 -translate-y-1/2 md:-ml-7">
               <div class="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 shadow-[0_0_15px_rgba(0,209,255,0.3)] flex items-center justify-center text-white text-xl">
                 <i class="fas fa-search"></i>
               </div>
@@ -178,8 +233,8 @@
               </p>
             </div>
             
-            <!-- Timeline circle -->
-            <div class="absolute left-1/2 top-0 w-14 h-14 -ml-7 md:ml-0 flex items-center justify-center z-10 transform md:translate-y-0 -translate-y-1/2">
+            <!-- Timeline circle - mobile adjusted positioning -->
+            <div class="absolute left-0 md:left-1/2 top-0 w-14 h-14 flex items-center justify-center z-10 transform md:translate-y-0 -translate-y-1/2 md:-ml-7">
               <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-700 shadow-[0_0_15px_rgba(56,81,224,0.3)] flex items-center justify-center text-white text-xl">
                 <i class="fas fa-chart-line"></i>
               </div>
@@ -187,15 +242,15 @@
           </div>
 
           <div class="timeline-item opacity-0 translate-y-8 transition-all duration-800 relative mb-0 md:grid md:grid-cols-2 md:items-center">
-            <div class="md:col-start-2 md:pl-16">
+            <div class="md:col-start-2 md:pl-16 pl-16">
               <h3 class="text-xl font-semibold mb-3 text-gray-800 relative inline-block after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-10 after:h-[3px] after:bg-gradient-to-r after:from-blue-500 after:to-transparent">Heatmap Generation</h3>
               <p class="text-gray-600">
                 A color-coded visualization overlays the original X-ray, with red areas indicating regions most critical to the diagnosis. This creates a transparent window into the AI's decision process.
               </p>
             </div>
             
-            <!-- Timeline circle -->
-            <div class="absolute left-1/2 top-0 w-14 h-14 -ml-7 md:ml-0 flex items-center justify-center z-10 transform md:translate-y-0 -translate-y-1/2">
+            <!-- Timeline circle - mobile adjusted positioning -->
+            <div class="absolute left-0 md:left-1/2 top-0 w-14 h-14 flex items-center justify-center z-10 transform md:translate-y-0 -translate-y-1/2 md:-ml-7">
               <div class="w-14 h-14 rounded-full bg-gradient-to-br from-red-400 to-red-500 shadow-[0_0_15px_rgba(255,57,57,0.3)] flex items-center justify-center text-white text-xl">
                 <i class="fas fa-fire"></i>
               </div>
